@@ -1,0 +1,64 @@
+<div id="content-wrap" class="container mt-3 mb-5 text-center" #target>
+  <div class="card rounded-2 p-0 shadow-sm mt-5">
+    <div
+      class="card-header ml-4 mb-3 mr-4 cursor-select"
+      [routerLink]="['/inicio']"
+      routerLinkActive="router-link-active"
+    >
+      <h4 class="font-usco-default">
+        <strong>Distinciones y Reconocimientos</strong>
+      </h4>
+    </div>
+    <div class="card-body ls">
+      <div class="row">
+        <div class="col">
+          <form class="pl-4 pr-4">
+            <div class="row text-left mb-3">
+              <div class="col">
+                <h5 class="font-usco-vt font-weight-bold">Membresías</h5>
+                <hr class="hr-usco-vt" />
+              </div>
+            </div>
+            <table class="table table-hover text-left font-usco-default">
+              <thead class="thead-dark">
+                <tr style="font-size: 12px">
+                  <th scope="col">Ámbito</th>
+                  <th scope="col">Institución</th>
+                  <th scope="col">Título</th>
+                  <th scope="col">Fecha Grado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 12px" class="text-left">
+                <tr></tr>
+              </tbody>
+            </table>
+            <button class="btn btn-usco-vt btn-block" (click)="openDialog()">
+              <i class="fa-solid fa-plus"></i> Agregar membresía
+            </button>
+          </form>
+        </div>
+      </div>
+      <!--  <div class="row">
+        <div class="col">
+          <button
+            class="btn btn-success mr-2"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="guardar"
+          >
+            <i class="fa-solid fa-floppy-disk"></i> Guardar
+          </button>
+          <button
+            class="btn btn-warning"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="cancelar"
+          >
+            <i class="fa-solid fa-xmark"></i> Cancelar
+          </button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

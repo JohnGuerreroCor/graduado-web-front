@@ -1,0 +1,450 @@
+<div id="content-wrap" class="container mt-3 mb-5 text-center" #target>
+  <div class="card rounded-2 p-0 shadow-sm mt-5">
+    <div
+      class="card-header ml-4 mb-3 mr-4 cursor-select"
+      [routerLink]="['/inicio']"
+      routerLinkActive="router-link-active"
+    >
+      <h4 class="font-usco-default">
+        <strong>Satisfacción con la Formación</strong>
+      </h4>
+    </div>
+    <div class="card-body ls">
+      <div class="row">
+        <div class="col">
+          <form class="pl-4 pr-4">
+            <div class="row text-left mb-3">
+              <div class="col">
+                <h5 class="font-usco-vt font-weight-bold">
+                  Competencias generales
+                </h5>
+                <hr class="hr-usco-vt" />
+              </div>
+            </div>
+            <!--  <div class="row">
+              <div class="col text-left">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default"
+                    >1. Exponer las ideas por medios escritos.</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default"
+                    >1. Exponer las ideas por medios escritos.</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default"
+                    >1. Exponer las ideas por medios escritos.</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div> -->
+            <!--  <div class="row">
+              <div class="col text-left">
+                <p>Escala likert</p>
+              </div>
+            </div> -->
+            <table class="table table-hover text-left font-usco-default">
+              <thead class="thead-dark">
+                <tr style="font-size: 12px">
+                  <th scope="col">Competencias</th>
+                  <th scope="col">Muy insatisfecho</th>
+                  <th scope="col">Insatisfecho</th>
+                  <th scope="col">Satisfecho</th>
+                  <th scope="col">Muy satisfecho</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 12px" class="text-left">
+                <tr>
+                  <th scope="row">1. Exponer las ideas por medios escritos.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses1" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2. Exponer oralmente con claridad.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses2" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    3. Persuadir y convencer a sus interlocutores.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    4. Identificar y usar símbolos para comunicarse (lenguaje
+                    icónico, lenguaje no verbal, etc.).
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    5. Aceptar las diferencias y trabajar en contextos
+                    multiculturales.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    6. Utilizar herramientas informáticas básicas (procesadores
+                    de texto, hojas de cálculo, correo electrónico, etc.).
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">7. Aprender y mantenerse actualizado.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">8. Ser creativo e innovador.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    9. Buscar, analizar, administrar y compartir información.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    10. Crear, investigar y adoptar tecnología.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    11. Diseñar e implementar soluciones con el apoyo de
+                    tecnología.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    12. Identificar, plantear y resolver problemas.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    13. Capacidad de abstracción, análisis y síntesis.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">14. Comprender la realidad que lo rodea.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">15. Asumir una cultura de convivencia.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    16. Asumir responsabilidades y tomar decisiones.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row text-left mb-3">
+              <div class="col">
+                <h5 class="font-usco-vt font-weight-bold">
+                  Competencias laborales generales
+                </h5>
+                <hr class="hr-usco-vt" />
+              </div>
+            </div>
+            <table class="table table-hover text-left font-usco-default">
+              <thead class="thead-dark">
+                <tr style="font-size: 12px">
+                  <th scope="col">Competencias</th>
+                  <th scope="col">Muy insatisfecho</th>
+                  <th scope="col">Insatisfecho</th>
+                  <th scope="col">Satisfecho</th>
+                  <th scope="col">Muy satisfecho</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 12px" class="text-left">
+                <tr>
+                  <th scope="row">
+                    17. Planificar y utilizar el tiempo de manera efectiva de
+                    tal forma que se logran los objetivos planteados.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    18. Utilizar herramientas informáticas especializadas
+                    (paquetes estadísticos, software de diseño, etc.).
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">19. Formular y ejecutar proyectos.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    20. Trabajar en equipo para alcanzar metas comunes.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    21. Trabajar de manera independiente sin supervisión
+                    permanente.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    22. Aplicar valores y ética profesional en el desempeño
+                    laboral.
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    23. Adaptarse a los cambios (trabajar en contextos nuevos y
+                    diversos).
+                  </th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">24. Trabajo bajo presión.</th>
+                  <td *ngFor="let option of options">
+                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                      <mat-radio-button [value]="option"> </mat-radio-button>
+                    </mat-radio-group>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row text-left mb-3">
+              <div class="col">
+                <h5 class="font-usco-vt font-weight-bold">
+                  Satisfacción de las competencias
+                </h5>
+                <hr class="hr-usco-vt" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-left">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default font-weight-bold"
+                    >25. De acuerdo a la contribución de la institución que lo
+                    formo, ¿Cuál de las competencias considera la más
+                    fuerte?</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-left">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default font-weight-bold"
+                    >26. De acuerdo a la contribución de la institución que lo
+                    formo, ¿Cuál de las competencias considera la más
+                    débil?</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-left">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default font-weight-bold"
+                    >27. ¿Cuál de las competencias considera que ha sido la más
+                    útil en su trayectoria laboral?</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-left">
+                <div class="form-group">
+                  <small class="font-usco-bl font-usco-default font-weight-bold"
+                    >28. ¿Cuál de las competencias considera que ha sido la
+                    menos útil en su trayectoria laboral?</small
+                  >
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Selecciones una opción</mat-label>
+                    <mat-select>
+                      <mat-option value="option1">Option 1</mat-option>
+                      <mat-option value="option2">Option 2</mat-option>
+                      <mat-option value="option3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            class="btn btn-success mr-2"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="guardar"
+          >
+            <i class="fa-solid fa-floppy-disk"></i> Guardar
+          </button>
+          <!-- <button
+            class="btn btn-warning"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="cancelar"
+          >
+            <i class="fa-solid fa-xmark"></i> Cancelar
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

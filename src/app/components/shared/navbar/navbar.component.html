@@ -1,0 +1,296 @@
+<mat-sidenav-container class="sidenav-container" id="page-container">
+  <mat-sidenav
+    #drawer
+    style="width: 281px"
+    *ngIf="navbarHiddenService.visibleSideBar"
+    class="sidenav"
+    fixedInViewport
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    #target
+  >
+    <mat-toolbar>
+      <span class="logo-lg"
+        ><b
+          ><img
+            class="img-fluid"
+            src="assets/universidad-surcolombiana-multicampos-white.png" /></b
+      ></span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a class="list" mat-list-item [routerLink]="['/inicio']">
+        <h6 class="pl-2 item-principal"><i class="fas fa-home"></i> Inicio</h6>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a class="list" mat-list-item [routerLink]="['/encuesta-seguimiento']">
+        <h6 class="pl-2 item-principal">
+          <i class="fa-solid fa-file-pen"></i> Encuesta Seguimiento
+        </h6>
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a class="list" mat-list-item [routerLink]="['/carnet']">
+        <h6 class="pl-2 item-principal">
+          <i class="fa-solid fa-id-card"></i> Actualización Carnet
+        </h6>
+      </a>
+    </mat-nav-list>
+    <!--  <mat-accordion>
+      <mat-expansion-panel
+        class="sidenav"
+        style="width: 280px"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header class="disable_ripple specific-class">
+          <mat-panel-title>
+            <h6 class="text-white mt-2">
+              <i class="fa-solid fa-id-card"></i> Carnet
+            </h6>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/estudiantes']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-user"></i> Estudiante
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/virtual']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-computer"></i> Estudiante Virtual
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/intercambio']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-earth-americas"></i> Estudiante Intercambio
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/graduados']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-graduation-cap"></i> Graduado
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/docentes']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-chalkboard-user"></i> Docente
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/administrativos']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-user-tie"></i> Administrativo
+            </h6>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel
+        class="sidenav"
+        style="width: 280px"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header class="disable_ripple specific-class">
+          <mat-panel-title>
+            <h6 class="text-white mt-2">
+              <i class="fa-solid fa-ticket"></i> Tiquetes
+            </h6>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/tiquete-invitados']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-users-rectangle"></i> Invitados
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/tiquete-visitantes']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-users"></i> Visitantes
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/tiquete-eventos']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-people-group"></i> Eventos
+            </h6>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel
+        class="sidenav"
+        style="width: 280px"
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header class="disable_ripple specific-class">
+          <mat-panel-title>
+            <h6 class="text-white mt-2">
+              <i class="fa-solid fa-scale-balanced"></i> Políticas
+            </h6>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/leyenda']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-stamp"></i> Leyenda
+            </h6>
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a
+            class="pl-4 sidenav-accordion"
+            mat-list-item
+            style="width: 300px"
+            [routerLink]="['/firma']"
+            routerLinkActive="router-link-active"
+          >
+            <h6 class="text-white">
+              <i class="fa-solid fa-signature"></i> Firma
+            </h6>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion> -->
+  </mat-sidenav>
+  <mat-sidenav-content (validarToken)="receiveMessage($event)">
+    <mat-toolbar class="toolbar">
+      <button
+        type="button"
+        class="btn btn-usco-vt m-1 text-white"
+        aria-label="Toggle sidenav"
+        (click)="toggle()"
+        *ngIf="isHandset$"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <h6 class="font-usco">Graduados</h6>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-white"
+            id="navbarDropdownMenu"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              src="{{ foto.url }}"
+              class="rounded-circle m-2"
+              alt="avatar image"
+              style="width: 40px; height: 40px"
+            />
+            {{ nombre | titlecase }} {{ apellido | titlecase }}</a
+          >
+          <div
+            class="dropdown-menu dropdown-menu-right dropdown-info"
+            aria-labelledby="navbarDropdownMenu"
+            id="gradiante"
+          >
+            <div class="text-center">
+              <a class="dropdown-info"
+                ><img
+                  src="{{ foto.url }}"
+                  class="rounded-circle z-depth-0 border-usco-white"
+                  alt="avatar image"
+                  height="100"
+              /></a>
+              <a class="dropdown-item font-usco-default"
+                ><b> {{ nombre | titlecase }} {{ apellido | titlecase }}</b></a
+              >
+              <a class="dropdown-item font-usco-default">{{
+                uaa | titlecase
+              }}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown"
+                ><button
+                  (click)="logout()"
+                  class="btn btn-usco-vt"
+                  type="button"
+                >
+                  Cerrar Sesión
+                </button></a
+              >
+            </div>
+          </div>
+        </li>
+      </ul>
+    </mat-toolbar>
+    <ng-content (validarToken)="receiveMessage($event)"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

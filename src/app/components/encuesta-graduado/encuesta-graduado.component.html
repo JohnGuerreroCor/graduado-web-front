@@ -1,0 +1,22 @@
+<app-navbar>
+  <mat-tab-group #tabGroup mat-stretch-tabs>
+    <mat-tab label="Datos Personales">
+      <app-datos-personales></app-datos-personales>
+    </mat-tab>
+    <mat-tab label="Satisfacción con la Formación" [disabled]="hide">
+      <app-satisfaccion-formacion></app-satisfaccion-formacion>
+    </mat-tab>
+    <mat-tab label="Situación Laboral" [disabled]="hide">
+      <app-situacion-laboral></app-situacion-laboral>
+    </mat-tab>
+    <mat-tab label="Formación Académica" [disabled]="hide">
+      <app-formacion-academica></app-formacion-academica>
+    </mat-tab>
+    <mat-tab label="Expectativas de Capacitación y Formación" [disabled]="hide">
+      <app-expectativas-capacitacion></app-expectativas-capacitacion>
+    </mat-tab>
+    <mat-tab label="Distinciones y Reconocimientos" [disabled]="hide">
+      <app-distinciones-reconocimientos></app-distinciones-reconocimientos>
+    </mat-tab>
+  </mat-tab-group>
+</app-navbar>

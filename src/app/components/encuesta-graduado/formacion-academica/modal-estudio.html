@@ -1,0 +1,95 @@
+<div mat-dialog-title>
+  <div class="row">
+    <div class="col">
+      <h5 class="font-usco-vt font-weight-bold">
+        <i class="fa-solid fa-circle-info"></i> Estudios en otras instituciones
+      </h5>
+    </div>
+    <div class="col text-right font-usco-vt font-weight-bold mr-4">
+      <i class="fa-solid fa-xmark" mat-dialog-close></i>
+    </div>
+  </div>
+</div>
+<hr />
+<mat-dialog-content>
+  <div class="row">
+    <div class="col">
+      <form class="pl-4 pr-4">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <small class="font-usco-bl font-usco-default font-weight-bold"
+                >Nombre del estudio</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input readonly matInput type="text" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <small class="font-usco-bl font-usco-default font-weight-bold"
+                >Nivel académico</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Seleccione el nivel</mat-label>
+                <mat-select>
+                  <mat-option>documento.tipoNombre</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <small class="font-usco-bl font-usco-default font-weight-bold"
+                >Fecha (DD/MM/AAAA)</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Identificacion</mat-label>
+                <input readonly matInput type="text" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <small class="font-usco-bl font-usco-default font-weight-bold"
+                >Entidad</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Empresa</mat-label>
+                <input readonly matInput type="text" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group">
+              <small class="font-usco-bl font-usco-default font-weight-bold"
+                >Título obtenido</small
+              >
+              <mat-form-field class="example-full-width">
+                <mat-label>Opción</mat-label>
+                <mat-select>
+                  <mat-option>Si</mat-option>
+                  <mat-option>No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row text-right p-2">
+    <div class="col">
+      <button class="btn btn-usco-vt" mat-dialog-close>
+        <i class="fa-solid fa-plus"></i> Agregar estudio
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>
