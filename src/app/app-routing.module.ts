@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { TokenComponent } from './components/token/token.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { EncuestaGraduadoComponent } from './components/encuesta-graduado/encuesta-graduado.component';
 import { DatosPersonalesComponent } from './components/encuesta-graduado/datos-personales/datos-personales.component';
 
@@ -11,7 +10,6 @@ const routes: Routes = [
   
   { path: 'login', component: LoginComponent },
   { path: 'token', component: TokenComponent },
-  { path: 'inicio', component: InicioComponent },
 
   { path: 'encuesta-seguimiento', component: EncuestaGraduadoComponent },
   { path: 'datos-personales', component: DatosPersonalesComponent },

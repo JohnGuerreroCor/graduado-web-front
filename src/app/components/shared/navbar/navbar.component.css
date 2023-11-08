@@ -24,7 +24,7 @@
 }
 
 .list {
-  color: #ffffff;
+  color: #fff;
 }
 
 .list:hover {
@@ -33,7 +33,7 @@
 
 .sidenav .mat-toolbar {
   background: #5c0e12;
-  color: #ffffff;
+  color: #fff;
 }
 
 .toolbar {
@@ -56,11 +56,15 @@
   color: white;
 }
 
+#gradiante {
+  background-image: linear-gradient(#8f141b 20%, white 10%);
+}
+
 .border-usco-white {
   border: solid 3px white;
 }
 
-.item-principal {
-  padding-top: 8px;
-  color: #ffffff;
+.item-usco:hover {
+  background-color: #222d32;
+  color: white;
 }

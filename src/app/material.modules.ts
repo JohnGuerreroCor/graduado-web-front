@@ -19,6 +19,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 @NgModule({
   imports: [
@@ -40,7 +48,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatGridListModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatTooltipModule
   ],
   exports: [
     MatButtonModule,
@@ -61,7 +75,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatGridListModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatProgressBarModule,
+    MatTooltipModule
   ],
 })
 export class MaterialModules {}

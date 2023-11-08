@@ -1,23 +1,9 @@
-.example-full-width {
-  width: 100%;
-}
-
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width2 {
-  width: 100%;
-}
-
 .card {
   display: inline-block !important;
   position: relative !important;
   width: 90%;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 14%) !important;
-  border-radius: 3px !important;
+  border-radius: 10px !important;
   color: rgba(0, 0, 0, 0.87);
   background: #fff;
   padding-top: 0px !important;
@@ -26,7 +12,7 @@
 .card-header {
   box-shadow: 0 5px 20px -12px rgb(0 0 0 / 42%), 0 4px 25px 0px rgb(0 0 0 / 12%),
     0 8px 10px -5px rgb(0 0 0 / 20%);
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 15px;
   background-color: #4d626c;
   margin-top: -25px !important;
@@ -35,53 +21,19 @@
   height: 65px !important;
 }
 
-.dashed {
-  border-bottom: dashed 1px #000000;
+fieldset.scheduler-border {
+  border: 1px groove #ddd !important;
+  padding: 0 1.4em 1.4em 1.4em !important;
+  margin: 0 0 1.5em 0 !important;
+  -webkit-box-shadow: 0px 0px 0px 0px #000;
+  box-shadow: 0px 0px 0px 0px #000;
 }
 
-/*STYLE RADIO BUTTOM MATERIAL*/
-::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color: #8f141b !important;
-  /*inner circle color change*/
-}
-
-::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
-  .mat-radio-outer-circle {
-  border-color: #8f141b !important;
-  /*outer ring color change*/
-}
-
-td.mat-cell {
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
-  font-size: 14px;
-}
-
-th.mat-header-cell {
-  text-align: center;
-  justify-content: center;
-  color: #fff;
-  background-color: #343a40;
-  border-color: #454d55;
-  padding: 20px;
-  font-size: 13px;
-}
-
-:host
-  ::ng-deep
-  .mat-slide-toggle.mat-checked:not(.mat-disabled)
-  .mat-slide-toggle-bar {
-  background-color: #b15b60;
-}
-
-:host
-  ::ng-deep
-  .mat-slide-toggle.mat-checked:not(.mat-disabled)
-  .mat-slide-toggle-thumb {
-  background-color: #8f141b;
-}
-
-.foto-usco-borde {
-  border-radius: 10px;
+legend.scheduler-border {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none;
 }

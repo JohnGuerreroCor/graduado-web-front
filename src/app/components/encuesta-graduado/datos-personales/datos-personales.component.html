@@ -1,321 +1,512 @@
-<div id="content-wrap" class="container mt-3 mb-5 text-center" #target>
+<div class="container mt-3 mb-5 text-center" #target>
   <div class="card rounded-2 p-0 shadow-sm mt-5">
     <div
       class="card-header ml-4 mb-3 mr-4 cursor-select"
       [routerLink]="['/inicio']"
       routerLinkActive="router-link-active"
     >
-      <h4 class="font-usco-default">
-        <strong>Datos Personales</strong>
-      </h4>
+      <h4 class="font-usco-default">Datos personales</h4>
     </div>
     <div class="card-body ls">
       <div class="row">
         <div class="col">
-          <form class="pl-4 pr-4">
-            <div class="row text-left mb-3">
-              <div class="col">
-                <h5 class="font-usco-vt font-weight-bold">Datos personales</h5>
-                <hr class="hr-usco-vt" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col">
-                    <img
-                      src="assets/carnet-f.png"
-                      alt="usco"
-                      class="img-fluid foto-usco-borde"
-                    />
-                    <button class="btn btn-usco-vt btn-block mt-4">
-                      <i class="fa-solid fa-pencil"></i> Editar
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="row">
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Tipo de Indentificación</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <!-- <mat-label>Tipo de Indentificación</mat-label> -->
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Indentificación</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <!-- <mat-label>Indentificación</mat-label> -->
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
+          <form [formGroup]="formDatosPersonales">
+            <fieldset class="scheduler-border shadow-sm">
+              <legend class="scheduler-border font-usco-vt">
+                Datos personales
+              </legend>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="row">
+                    <div class="col">
+                      <img
+                        *ngIf="foto.url != ''"
+                        [src]="foto.url"
+                        alt="usco"
+                        class="img-thumbnail rounded"
+                      />
+                      <img
+                        *ngIf="foto.url == ''"
+                        src="assets/precarga-usco.gif"
+                        alt="usco"
+                        class="img-thumbnail rounded"
+                      />
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Apellido(s)</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Apellido(s)</mat-label>
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
+                <div class="col">
+                  <div class="row mb-3">
+                    <div class="col" *ngIf="(graduado | json) != '[]'">
+                      <div class="row text-left">
+                        <div class="col">
+                          <h6 class="font-usco-gr font-weight-bold">
+                            Cambio de foto:
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <form action="">
+                            <label class="file example-full-width">
+                              <input
+                                type="file"
+                                accept="image/png"
+                                (change)="change($event)"
+                                aria-label="File browser example"
+                              />
+                              <span class="file-custom text-left">{{
+                                nombreFoto
+                              }}</span>
+                            </label>
+                          </form>
+                        </div>
+                        <div class="col-sm-3" *ngIf="cargaFoto">
+                          <button class="btn btn-success" (click)="subirFoto()">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar foto
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Nombre(s)</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Nombre(s)</mat-label>
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
+                  <div class="row mt-2">
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Tipo de Indentificación</mat-label>
+                          <input
+                            matInput
+                            formControlName="identificacionTipo"
+                            readonly
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Indentificación</mat-label>
+                          <input
+                            matInput
+                            formControlName="identificacion"
+                            readonly
+                          />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Apellido(s)</mat-label>
+                          <input matInput formControlName="apellido" readonly />
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col text-left">
+                      <div class="form-group">
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Nombre(s)</mat-label>
+                          <input matInput formControlName="nombre" readonly />
+                        </mat-form-field>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Genero</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Genero</mat-label>
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="col text-left">
-                    <div class="form-group">
-                      <small
-                        class="font-usco-bl font-usco-default font-weight-bold"
-                        >Estado Civil</small
-                      >
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Estado Civil</mat-label>
-                        <input matInput id="apellidoUno" required />
-                      </mat-form-field>
-                    </div>
+              </div>
+              <div class="row">
+                <div
+                  class="col text-left"
+                  *ngIf="listadoDatosPersonales[0]?.genero == 'M'"
+                >
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Genero</mat-label>
+                      <input matInput value="MASCULINO" readonly />
+                    </mat-form-field>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Grupo Sanguineo</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Grupo Sanguineo</mat-label>
-                    <input matInput id="apellidoUno" required />
-                  </mat-form-field>
+                <div
+                  class="col text-left"
+                  *ngIf="listadoDatosPersonales[0]?.genero == 'F'"
+                >
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Genero</mat-label>
+                      <input matInput value="FAMENINO" readonly />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Estado Civil</mat-label>
+                      <input matInput formControlName="estadoCivil" readonly />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Grupo Sanguineo</mat-label>
+                      <input
+                        matInput
+                        formControlName="grupoSanguineo"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Fecha de Nacimiento</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Fecha de Nacimiento</mat-label>
-                    <input matInput id="apellidoDos" required />
-                  </mat-form-field>
+              <div class="row">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Fecha de nacimiento</mat-label>
+                      <input
+                        matInput
+                        formControlName="fechaNacimiento"
+                        readonly
+                      />
+                      <mat-hint>Día/Mes/Año</mat-hint>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>País nacimiento</mat-label>
+                      <input
+                        matInput
+                        formControlName="paisNacimiento"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Pais</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Pais</mat-label>
-                    <input matInput id="nombre" required />
-                  </mat-form-field>
+              <div class="row">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Departamento nacimiento</mat-label>
+                      <input
+                        matInput
+                        formControlName="departamentoNacimiento"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Ciudad nacimiento</mat-label>
+                      <input
+                        matInput
+                        formControlName="municipioNacimiento"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Departamento</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Departamento</mat-label>
-                    <input matInput id="apellido" type="text" required />
-                  </mat-form-field>
+            </fieldset>
+            <fieldset class="scheduler-border shadow-sm">
+              <legend class="scheduler-border font-usco-vt">
+                Datos expedición
+              </legend>
+              <div class="row mt-3">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>País expedición</mat-label>
+                      <input
+                        matInput
+                        formControlName="paisExpedicion"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Departamento expedición</mat-label>
+                      <input
+                        matInput
+                        formControlName="departamentoExpedicion"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Ciudad</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Ciudad</mat-label>
-                    <input matInput type="text" id="email" required />
-                  </mat-form-field>
+              <div class="row">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Ciudad expedición</mat-label>
+                      <input
+                        matInput
+                        formControlName="municipioExpedicion"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <mat-form-field
+                          class="example-full-width"
+                          appearance="outline"
+                        >
+                          <mat-label>Fecha de expedición</mat-label>
+                          <input
+                            matInput
+                            formControlName="identificacionFechaExpedicion"
+                            readonly
+                          />
+                          <mat-hint>Día/Mes/Año</mat-hint>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div
+                      class="col-sm-2"
+                      *ngIf="listadoDatosPersonales[0]?.urlAnexoExpedicion"
+                    >
+                      <button
+                        class="btn btn-usco-vt btn-lg mt-1"
+                        type="button"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Documento de identidad"
+                        (click)="mostrarArchivo()"
+                      >
+                        <i class="fa-solid fa-file-pdf"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row text-left mb-3">
-              <div class="col">
-                <h5 class="font-usco-vt font-weight-bold">Datos de Contacto</h5>
-                <hr class="hr-usco-vt" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Email</small
+              <div class="row">
+                <div class="col text-right">
+                  <button
+                    class="btn btn-usco-vt"
+                    (click)="openDialogExpedicion(identificacion)"
                   >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Email</mat-label>
-                    <input matInput id="apellido" type="text" required />
-                  </mat-form-field>
+                    <i class="fa-solid fa-pencil"></i> Editar datos de
+                    expedición
+                  </button>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Página</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Página</mat-label>
-                    <input matInput type="text" id="email" required />
-                  </mat-form-field>
+            </fieldset>
+            <fieldset class="scheduler-border shadow-sm">
+              <legend class="scheduler-border font-usco-vt">
+                Datos de contacto
+              </legend>
+              <div class="row mt-3">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Email</mat-label>
+                      <input
+                        matInput
+                        formControlName="emailPersonal"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Página</mat-label>
+                      <input matInput formControlName="paginaWeb" readonly />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Telefono (fijo)</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Telefono (fijo)</mat-label>
-                    <input matInput type="text" id="empresa" required />
-                  </mat-form-field>
+              <div class="row">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Telefono (fijo)</mat-label>
+                      <input matInput formControlName="telefonoFijo" readonly />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Telefono (movil)</mat-label>
+                      <input
+                        matInput
+                        formControlName="telefonoMovil"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Telefono (movil)</small
+              <div class="row">
+                <div class="col text-right">
+                  <button
+                    class="btn btn-usco-vt"
+                    (click)="openDialogContacto(identificacion)"
                   >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Telefono (movil)</mat-label>
-                    <input matInput id="apellido" type="text" required />
-                  </mat-form-field>
+                    <i class="fa-solid fa-pencil"></i> Editar datos de contacto
+                  </button>
                 </div>
               </div>
-            </div>
-            <div class="row text-left mb-3">
-              <div class="col">
-                <h5 class="font-usco-vt font-weight-bold">
-                  Datos de Residencia
-                </h5>
-                <hr class="hr-usco-vt" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >País</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>País</mat-label>
-                    <input matInput id="apellido" type="text" required />
-                  </mat-form-field>
+            </fieldset>
+            <fieldset class="scheduler-border shadow-sm">
+              <legend class="scheduler-border font-usco-vt">
+                Datos de residencia
+              </legend>
+              <div class="row mt-3">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>País residencia</mat-label>
+                      <input
+                        matInput
+                        formControlName="paisResidencia"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Departamento residencia</mat-label>
+                      <input
+                        matInput
+                        formControlName="departamentoResidencia"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Ciudad residencia</mat-label>
+                      <input
+                        matInput
+                        formControlName="municipioResidencia"
+                        readonly
+                      />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Departamento</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Departamento</mat-label>
-                    <input matInput type="text" id="email" required />
-                  </mat-form-field>
+              <div class="row">
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Barrio</mat-label>
+                      <input matInput formControlName="barrio" readonly />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col text-left">
+                  <div class="form-group">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Dirección</mat-label>
+                      <input matInput formControlName="direccion" readonly />
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Ciudad</small
+              <div class="row">
+                <div class="col text-right">
+                  <button
+                    class="btn btn-usco-vt"
+                    (click)="openDialogResidencia(identificacion)"
                   >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Ciudad</mat-label>
-                    <input matInput type="text" id="empresa" required />
-                  </mat-form-field>
+                    <i class="fa-solid fa-pencil"></i> Editar datos de
+                    residencia
+                  </button>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Barrio</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Barrio</mat-label>
-                    <input matInput id="apellido" type="text" required />
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >Dirección</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Dirección</mat-label>
-                    <input matInput type="text" id="email" required />
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
+            </fieldset>
           </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button
-            class="btn btn-success mr-2"
-            data-toggle="tooltip"
-            data-placement="top"
-            title="guardar"
-          >
-            <i class="fa-solid fa-floppy-disk"></i> Guardar
-          </button>
-          <!-- <button
-            class="btn btn-warning"
-            data-toggle="tooltip"
-            data-placement="top"
-            title="cancelar"
-          >
-            <i class="fa-solid fa-xmark"></i> Cancelar
-          </button> -->
         </div>
       </div>
     </div>

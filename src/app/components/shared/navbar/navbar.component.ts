@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { NavbarHiddenService } from 'src/app/services/navbar-hidden.service';
 import { FotoService } from 'src/app/services/foto.service';
-import { FotoAntigua } from '../../../models/foto-antigua';
 import swal from 'sweetalert2';
+import { FotoAntigua } from '../../../models/foto-antigua';
 
 @Component({
   selector: 'app-navbar',
@@ -20,17 +20,20 @@ export class NavbarComponent implements OnInit {
   public perCodigoAntigua: any = '' + this.auth.user.per_codigo;
   public nombre: any = this.auth.user.nombre;
   public apellido: any = this.auth.user.apellido;
-  public uaa: any = this.auth.user.uaa;
-  public roles: any[] = this.auth.user.roles;
-  public rol: any = this.roles;
-  //public rol: any = this.roles.toString();
-  url: any = environment.URL_BACKEND;
+  carnetEstudiante: boolean = false;
+  carnetGraduado: boolean = false;
+  carnetAdministrativo: boolean = false;
+  carnetDocente: boolean = false;
+  carnetVirtual: boolean = false;
+  carnetIntercambio: boolean = false;
+
+  url: string = environment.URL_BACKEND;
   panelOpenState = false;
   foto: FotoAntigua = {
     url: '',
   };
 
-  isHandset$: Observable<any> = this.breakpointObserver
+  isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
@@ -64,8 +67,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  receiveMessage($event: any) {
-    this.rol = $event;
+  scroll(page: HTMLElement) {
+    page.scrollIntoView();
   }
 
   logout(): void {
@@ -74,7 +77,7 @@ export class NavbarComponent implements OnInit {
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', swal.stopTimer);

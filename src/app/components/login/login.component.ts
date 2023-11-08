@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
@@ -15,9 +21,15 @@ export class LoginComponent implements OnInit {
   ver = true;
   today = new Date();
   cargando: boolean = false;
+  formLogin!: FormGroup;
 
-  constructor(public authService: AuthService, private router: Router) {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
     this.usuario = new Usuario();
+    this.crearFormularioLogin();
   }
 
   ngOnInit() {
@@ -54,6 +66,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  private crearFormularioLogin(): void {
+    this.formLogin = this.formBuilder.group({
+      usuario: new FormControl('', Validators.required),
+      contrasenia: new FormControl('', Validators.required),
+    });
+  }
+
   informacion() {
     Swal.fire({
       icon: 'info',
@@ -72,27 +91,8 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.cargando = true;
-    if (this.usuario.username == null || this.usuario.password == null) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: 'error',
-        title: 'Error de inicio de sesión',
-        text: 'Usuario o contraseña vacía',
-      });
-      this.cargando = false;
-      return;
-    }
+    this.usuario.username = this.formLogin.get('usuario')!.value;
+    this.usuario.password = this.formLogin.get('contrasenia')!.value;
     this.authService.login(this.usuario).subscribe(
       (response) => {
         this.authService.guardarUsuario(response.access_token);

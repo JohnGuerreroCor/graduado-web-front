@@ -1,0 +1,105 @@
+<h2 mat-dialog-title class="text-white bg-usco-vt-d6">
+  <i class="fa-solid fa-circle-info"></i> Datos expedición documento identidad
+</h2>
+<mat-dialog-content>
+  <div class="row mt-5">
+    <div class="col pl-4 pr-4">
+      <form [formGroup]="formDatosExpedicion">
+        <div class="row">
+          <div class="col text-left">
+            <div class="form-group">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>País expedición</mat-label>
+                <mat-select formControlName="paisExpedicionCodigo">
+                  <mat-option
+                    *ngFor="let pais of listadoPaises"
+                    [value]="pais.codigo"
+                    (click)="obtenerDepartamentosPais(pais.codigo)"
+                    >{{ pais.nombre | uppercase }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col text-left">
+            <div class="form-group">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Departamento expedición</mat-label>
+                <mat-select formControlName="departamentoExpedicionCodigo">
+                  <mat-option
+                    *ngFor="
+                      let departamento of listadoDepartamentosExpedicion
+                    "
+                    [value]="departamento.codigo"
+                    (click)="obtenerMunicipiosDepartamento(departamento.codigo)"
+                    >{{ departamento.nombre }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col text-left">
+            <div class="form-group">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Ciudad expedición</mat-label>
+                <mat-select formControlName="municipioExpedicionCodigo">
+                  <mat-option
+                    *ngFor="
+                      let municipio of listadoMunicipiosExpedicion
+                    "
+                    [value]="municipio.codigo"
+                    >{{ municipio.nombre }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-left">
+            <div class="form-group">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Fecha de expedicion</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker2"
+                  formControlName="identificacionFechaExpedicion"
+                />
+                <mat-hint>Mes/Día/Año</mat-hint>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col">
+            <label class="file example-full-width mt-2">
+              <input
+                type="file"
+                accept="application/pdf"
+                aria-label="File browser example"
+                (change)="change($event)"
+                formControlName="url"
+              />
+              <span class="file-custom text-left">{{ nombreArchivo }}</span>
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    class="btn btn-success"
+    [disabled]="!formDatosExpedicion.valid"
+    (click)="generarSoporteExpedicion()"
+  >
+    <i class="fa-solid fa-floppy-disk"></i> Guardar
+  </button>
+  <button class="btn btn-warning ml-2" mat-dialog-close>
+    <i class="fa-solid fa-xmark"></i> Cancelar
+  </button>
+</mat-dialog-actions>

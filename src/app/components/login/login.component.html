@@ -23,21 +23,19 @@
     </div>
     <div class="card-body text-center font-usco-gr">
       <div class="container">
-        <form>
+        <form [formGroup]="formLogin">
           <div class="row">
             <div class="col">
-              <mat-form-field class="example-full-width">
-                <span matPrefix class="mr-2"
+              <mat-form-field class="example-full-width" appearance="outline">
+                <span matPrefix class="p-3"
                   ><i class="fa-solid fa-user"></i
                 ></span>
                 <mat-label>Usuario</mat-label>
                 <input
                   matInput
-                  [(ngModel)]="usuario.username"
-                  placeholder="Toque el botón 'i' para más información"
-                  autocomplete="off"
+                  formControlName="usuario"
                   name="username"
-                  tabindex="1"
+                  autocomplete="off"
                 />
                 <button mat-icon-button matSuffix (click)="informacion()">
                   <i class="fa-solid fa-circle-info"></i>
@@ -47,15 +45,15 @@
           </div>
           <div class="row">
             <div class="col">
-              <mat-form-field class="example-full-width">
-                <span matPrefix class="mr-2"
+              <mat-form-field class="example-full-width" appearance="outline">
+                <span matPrefix class="p-3"
                   ><i class="fa-solid fa-lock"></i
                 ></span>
                 <mat-label>Contraseña</mat-label>
                 <input
                   matInput
                   [type]="hide ? 'password' : 'text'"
-                  [(ngModel)]="usuario.password"
+                  formControlName="contrasenia"
                   type="password"
                   name="password"
                   placeholder="Digite su clave"
