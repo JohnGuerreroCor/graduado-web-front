@@ -5,81 +5,112 @@
 <mat-dialog-content>
   <div class="row mt-4">
     <div class="col pl-4 pr-4">
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Entidad</mat-label>
-            <input readonly matInput type="text" />
-          </mat-form-field>
+      <form [formGroup]="formularioMencionReconocimiento">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Institución</mat-label>
+              <input
+                required
+                matInput
+                type="text"
+                formControlName="institucion"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Tipo de reconocimiento</mat-label>
+              <input required matInput type="text" formControlName="tipo" />
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Tipo</mat-label>
-            <input readonly matInput type="text" />
-          </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Ambito</mat-label>
+              <mat-select formControlName="ambitoCodigo">
+                <mat-option
+                  *ngFor="let item of listadoAmbitos"
+                  [value]="item.codigo"
+                  >{{ item.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Fecha de inicio (Día/Mes/Año)</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                formControlName="fecha"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker1"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Ámbito</mat-label>
-            <mat-select>
-              <mat-option>documento.tipoNombre</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>País</mat-label>
+              <mat-select formControlName="paisCodigo">
+                <mat-option
+                  *ngFor="let item of listadoPaises"
+                  [value]="item.codigo"
+                  (click)="obtenerDepartamentos(item.codigo)"
+                  >{{ item.nombre | uppercase }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Departamento</mat-label>
+              <mat-select formControlName="departamentoCodigo">
+                <mat-option
+                  *ngFor="let item of listadoDepartamento"
+                  [value]="item.codigo"
+                  (click)="obtenerMunicipios(item.codigo)"
+                  >{{ item.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Municipio</mat-label>
+              <mat-select formControlName="municipioCodigo">
+                <mat-option
+                  *ngFor="let item of listadoMunicipio"
+                  [value]="item.codigo"
+                  >{{ item.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Fecha (DD/MM/AAAA)</mat-label>
-            <input readonly matInput type="text" />
-          </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Título</mat-label>
+              <input required matInput type="text" formControlName="titulo" />
+            </mat-form-field>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>País</mat-label>
-            <mat-select>
-              <mat-option>Si</mat-option>
-              <mat-option>No</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Descripción</mat-label>
+              <textarea matInput formControlName="descripcion"></textarea>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Departamento</mat-label>
-            <mat-select>
-              <mat-option>Si</mat-option>
-              <mat-option>No</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Ciudad</mat-label>
-            <mat-select>
-              <mat-option>Si</mat-option>
-              <mat-option>No</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Título</mat-label>
-            <input readonly matInput type="text" />
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Descripción</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </mat-dialog-content>
@@ -87,7 +118,7 @@
   <button class="btn btn-warning mr-2" mat-dialog-close>
     <i class="fa-solid fa-xmark"></i> Cancelar
   </button>
-  <button class="btn btn-success">
+  <button class="btn btn-success" (click)="generarMencionReconocimiento()" [disabled]="!formularioMencionReconocimiento.valid">
     <i class="fa-solid fa-floppy-disk"></i> Guardar
   </button>
 </mat-dialog-actions>

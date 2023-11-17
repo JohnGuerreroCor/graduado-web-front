@@ -9,6 +9,10 @@ export class MencionReconocimiento {
   ambito!: string;
   titulo!: string;
   descripcion!: string;
+  paisCodigo!: number;
+  pais!: string;
+  departamentoCodigo!: number;
+  departamento!: string;
   municipioCodigo!: number;
   municipio!: string;
   fecha!: Date;

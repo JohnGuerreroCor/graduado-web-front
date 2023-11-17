@@ -22,10 +22,10 @@ import { FormacionAcademicaService } from 'src/app/services/formacion-academica.
 import { UbicacionService } from 'src/app/services/ubicacion.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatePipe } from '@angular/common';
-import Swal from 'sweetalert2';
 import { Pais } from 'src/app/models/pais';
 import { Departamento } from 'src/app/models/departamento';
 import { Municipio } from 'src/app/models/municipio';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formacion-academica',
@@ -68,7 +68,6 @@ export class FormacionAcademicaComponent {
   constructor(
     public authService: AuthService,
     public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
     public graduadoService: GraduadoService,
     public fotoService: FotoService,
     public formacionAcademicaService: FormacionAcademicaService,

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { MencionReconocimiento } from '../models/mencion-reconocimiento';
+import { Ambito } from '../models/ambito';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,21 @@ export class MencionReconocimientoService {
       return true;
     }
     return false;
+  }
+
+  obtenerAmbitos(): Observable<Ambito[]> {
+    return this.http
+      .get<Ambito[]>(`${this.url}/obtener-ambitos`, {
+        headers: this.aggAutorizacionHeader(),
+      })
+      .pipe(
+        catchError((e) => {
+          if (this.isNoAutorizado(e)) {
+            return throwError(e);
+          }
+          return throwError(e);
+        })
+      );
   }
 
   obtenerMencionesReconocimiento(
@@ -80,5 +96,25 @@ export class MencionReconocimientoService {
           return throwError(e);
         })
       );
+  }
+
+  registrarMencionReconocimiento(
+    mencionReconocimiento: MencionReconocimiento
+  ): Observable<number> {
+    return this.http.put<number>(
+      `${this.url}/registrar-mencion-reconocimiento`,
+      mencionReconocimiento,
+      { headers: this.aggAutorizacionHeader() }
+    );
+  }
+
+  actualizarMencionReconocimiento(
+    mencionReconocimiento: MencionReconocimiento
+  ): Observable<number> {
+    return this.http.put<number>(
+      `${this.url}/actualizar-mencion-reconocimiento`,
+      mencionReconocimiento,
+      { headers: this.aggAutorizacionHeader() }
+    );
   }
 }

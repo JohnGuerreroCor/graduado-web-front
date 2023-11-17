@@ -47,7 +47,9 @@
                 </td>
               </ng-container>
               <ng-container matColumnDef="titulo">
-                <th mat-header-cell *matHeaderCellDef>Título</th>
+                <th style="width: 20%" mat-header-cell *matHeaderCellDef>
+                  Título
+                </th>
                 <td mat-cell *matCellDef="let element" class="font-sm-usco">
                   {{ element.titulo }}
                 </td>
@@ -62,6 +64,29 @@
                 <th mat-header-cell *matHeaderCellDef>Fecha de grado</th>
                 <td mat-cell *matCellDef="let element">
                   {{ element.fecha | date : "dd/MM/yyyy" }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="opciones">
+                <th mat-header-cell *matHeaderCellDef>Opciones</th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    class="btn btn-danger btn-sm mr-2"
+                    (click)="eliminarMencionReconocimiento(element)"
+                    #tooltip="matTooltip"
+                    matTooltip="Borrar"
+                    matTooltipPosition="above"
+                  >
+                    <i class="fa-solid fa-trash fa-xs"></i>
+                  </button>
+                  <button
+                    class="btn btn-info btn-sm"
+                    (click)="editarFormulario(element)"
+                    #tooltip="matTooltip"
+                    matTooltip="Editar"
+                    matTooltipPosition="above"
+                  >
+                    <i class="fa-solid fa-pencil fa-xs"></i>
+                  </button>
                 </td>
               </ng-container>
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
