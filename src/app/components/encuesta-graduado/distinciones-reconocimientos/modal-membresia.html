@@ -1,149 +1,93 @@
-<div mat-dialog-title>
-  <div class="row">
-    <div class="col">
-      <h5 class="font-usco-vt font-weight-bold">
-        <i class="fa-solid fa-circle-info"></i> Membresías
-      </h5>
-    </div>
-    <div class="col text-right font-usco-vt font-weight-bold mr-4">
-      <i class="fa-solid fa-xmark" mat-dialog-close></i>
-    </div>
-  </div>
-</div>
-<hr />
+<h2 mat-dialog-title class="text-white bg-usco-gr-d6">
+  <i class="fa-solid fa-circle-info"></i> Formulario distinciones y
+  reconocimientos
+</h2>
 <mat-dialog-content>
-  <div class="row">
-    <div class="col">
-      <form class="pl-4 pr-4">
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Entidad</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Nombre</mat-label>
-                <input readonly matInput type="text" />
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Tipo</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Nombre</mat-label>
-                <input readonly matInput type="text" />
-              </mat-form-field>
-            </div>
-          </div>
+  <div class="row mt-4">
+    <div class="col pl-4 pr-4">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Entidad</mat-label>
+            <input readonly matInput type="text" />
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Ámbito</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Seleccione el nivel</mat-label>
-                <mat-select>
-                  <mat-option>documento.tipoNombre</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Fecha (DD/MM/AAAA)</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Identificacion</mat-label>
-                <input readonly matInput type="text" />
-              </mat-form-field>
-            </div>
-          </div>
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <input readonly matInput type="text" />
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >País</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Opción</mat-label>
-                <mat-select>
-                  <mat-option>Si</mat-option>
-                  <mat-option>No</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Departamento</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Opción</mat-label>
-                <mat-select>
-                  <mat-option>Si</mat-option>
-                  <mat-option>No</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Ciudad</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Opción</mat-label>
-                <mat-select>
-                  <mat-option>Si</mat-option>
-                  <mat-option>No</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ámbito</mat-label>
+            <mat-select>
+              <mat-option>documento.tipoNombre</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Título</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Identificacion</mat-label>
-                <input readonly matInput type="text" />
-              </mat-form-field>
-            </div>
-          </div>
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fecha (DD/MM/AAAA)</mat-label>
+            <input readonly matInput type="text" />
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <small class="font-usco-bl font-usco-default font-weight-bold"
-                >Descripción</small
-              >
-              <mat-form-field class="example-full-width">
-                <mat-label>Identificacion</mat-label>
-                <textarea matInput></textarea>
-              </mat-form-field>
-            </div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>País</mat-label>
+            <mat-select>
+              <mat-option>Si</mat-option>
+              <mat-option>No</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-      </form>
-    </div>
-  </div>
-  <hr />
-  <div class="row text-right p-2">
-    <div class="col">
-      <button class="btn btn-usco-vt" mat-dialog-close>
-        <i class="fa-solid fa-plus"></i> Agregar membresía
-      </button>
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Departamento</mat-label>
+            <mat-select>
+              <mat-option>Si</mat-option>
+              <mat-option>No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ciudad</mat-label>
+            <mat-select>
+              <mat-option>Si</mat-option>
+              <mat-option>No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input readonly matInput type="text" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
   </div>
 </mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-warning mr-2" mat-dialog-close>
+    <i class="fa-solid fa-xmark"></i> Cancelar
+  </button>
+  <button class="btn btn-success">
+    <i class="fa-solid fa-floppy-disk"></i> Guardar
+  </button>
+</mat-dialog-actions>

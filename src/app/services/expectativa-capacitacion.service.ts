@@ -5,19 +5,16 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { DatosPersonales } from '../models/datos-personales';
-import { IdentificacionTipos } from '../models/identificacion-tipos';
-import { EstadoCivil } from '../models/estado-civil';
-import { GrupoSanguineo } from '../models/grupo-sanguineo';
-import { DatosContacto } from '../models/datos-contacto';
-import { DatosResidencia } from '../models/datos-residencia';
-import { DatosExpedicion } from '../models/datos-expedicion';
+import { ExpectativaCapacitacionEscala } from '../models/expectativa-capacitacion-escala';
+import { ExpectativaCapacitacionRespuesta } from '../models/expectativa-capacitacion-respuesta';
+import { ReporteExpectativaCapacitacion } from '../models/reporte-expectativa-capacitacion';
+import { ExpectativaCapacitacionPregunta } from '../models/expectativa-capacitacion-pregunta';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DatosPersonalesService {
-  private url: string = `${environment.URL_BACKEND}/datos`;
+export class ExpectativaCapacitacionService {
+  private url: string = `${environment.URL_BACKEND}/expectativacapacitacion`;
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   userLogeado: String = this.authservice.user.username;
@@ -47,10 +44,10 @@ export class DatosPersonalesService {
     return false;
   }
 
-  obtenerDatosPersonales(codigo: string): Observable<DatosPersonales[]> {
+  obtenerPregunta(): Observable<ExpectativaCapacitacionPregunta[]> {
     return this.http
-      .get<DatosPersonales[]>(
-        `${this.url}/obtener-datos-personales/${codigo}`,
+      .get<ExpectativaCapacitacionPregunta[]>(
+        `${this.url}/obtener-pregunta`,
         {
           headers: this.aggAutorizacionHeader(),
         }
@@ -65,11 +62,14 @@ export class DatosPersonalesService {
       );
   }
 
-  obtenerTiposIdentificacion(): Observable<IdentificacionTipos[]> {
+  obtenerEscala(codigo: number): Observable<ExpectativaCapacitacionEscala[]> {
     return this.http
-      .get<IdentificacionTipos[]>(`${this.url}/obtener-tipos-identificacion`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<ExpectativaCapacitacionEscala[]>(
+        `${this.url}/obtener-escala/${codigo}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -80,11 +80,16 @@ export class DatosPersonalesService {
       );
   }
 
-  obtenerEstadosCivil(): Observable<EstadoCivil[]> {
+  obtenerRespuestasIdentificacion(
+    id: string
+  ): Observable<ExpectativaCapacitacionRespuesta[]> {
     return this.http
-      .get<EstadoCivil[]>(`${this.url}/obtener-estados-civil`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<ExpectativaCapacitacionRespuesta[]>(
+        `${this.url}/obtener-respuestas-identificacion/${id}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -95,11 +100,17 @@ export class DatosPersonalesService {
       );
   }
 
-  obtenerGruposSanguineos(): Observable<GrupoSanguineo[]> {
+  obtenerRerporteExpectativaCapacitacion(
+    inicio: any,
+    fin: any
+  ): Observable<ReporteExpectativaCapacitacion[]> {
     return this.http
-      .get<GrupoSanguineo[]>(`${this.url}/obtener-grupos-sanguineos`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<ReporteExpectativaCapacitacion[]>(
+        `${this.url}/obtener-reporte-excpectativa-capacitacion/${inicio}/${fin}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -108,29 +119,5 @@ export class DatosPersonalesService {
           return throwError(e);
         })
       );
-  }
-
-  actualizarDatosContacto(contacto: DatosContacto): Observable<number> {
-    return this.http.put<number>(
-      `${this.url}/actualizar-datos-contacto`,
-      contacto,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  actualizarDatosResidencia(residencia: DatosResidencia): Observable<number> {
-    return this.http.put<number>(
-      `${this.url}/actualizar-datos-residencia`,
-      residencia,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  actualizarDatosExpedicion(expedicion: DatosExpedicion): Observable<number> {
-    return this.http.put<number>(
-      `${this.url}/actualizar-datos-expedicion/${this.userLogeado}`,
-      expedicion,
-      { headers: this.aggAutorizacionHeader() }
-    );
   }
 }

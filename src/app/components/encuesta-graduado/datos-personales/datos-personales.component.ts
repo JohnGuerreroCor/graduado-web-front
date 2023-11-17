@@ -79,6 +79,7 @@ export class DatosPersonalesComponent {
   dialogRef!: MatDialogRef<any>;
 
   constructor(
+    public authService: AuthService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     public graduadoService: GraduadoService,
@@ -90,7 +91,7 @@ export class DatosPersonalesComponent {
     private datePipe: DatePipe
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.identificacion = params['id'];
+      this.identificacion = '' + authService.user.identificacion;
       this.graduado = [];
       this.foto.url = '';
       this.dataSource = new MatTableDataSource<Graduado>([]);
@@ -234,7 +235,7 @@ export class DatosPersonalesComponent {
       );
     this.formDatosPersonales
       .get('paisExpedicion')!
-      .setValue(this.listadoDatosPersonales[0].paisExpedicion);
+      .setValue(this.listadoDatosPersonales[0].paisExpedicion.toUpperCase());
     this.formDatosPersonales
       .get('departamentoExpedicion')!
       .setValue(this.listadoDatosPersonales[0].departamentoExpedicion);
@@ -266,7 +267,7 @@ export class DatosPersonalesComponent {
       );
     this.formDatosPersonales
       .get('paisNacimiento')!
-      .setValue(this.listadoDatosPersonales[0].paisNacimiento);
+      .setValue(this.listadoDatosPersonales[0].paisNacimiento.toUpperCase());
     this.formDatosPersonales
       .get('departamentoNacimiento')!
       .setValue(this.listadoDatosPersonales[0].departamentoNacimiento);
@@ -287,7 +288,7 @@ export class DatosPersonalesComponent {
       .setValue(this.listadoDatosPersonales[0].telefonoMovil);
     this.formDatosPersonales
       .get('paisResidencia')!
-      .setValue(this.listadoDatosPersonales[0].paisResidencia);
+      .setValue(this.listadoDatosPersonales[0].paisResidencia.toUpperCase());
     this.formDatosPersonales
       .get('departamentoResidencia')!
       .setValue(this.listadoDatosPersonales[0].departamentoResidencia);

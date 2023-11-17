@@ -131,6 +131,7 @@ export class AuthService {
     let datos = this.obtenerdatosToken(accessToken);
     //  let helper = new JwtHelperService();
     // let datos = helper.decodeToken(accessToken);
+console.log(datos);
 
     this.usuario = new Usuario();
     this.usuario.username = datos.user_name;
@@ -139,6 +140,7 @@ export class AuthService {
     this.usuario.nombre = datos.nombre;
     this.usuario.apellido = datos.apellido;
     this.usuario.uaa = datos.uaa;
+    this.usuario.identificacion = datos.identificacion;
 
     sessionStorage.setItem('usuario', JSON.stringify(this.usuario));
     localStorage.setItem('usuario', JSON.stringify(this.usuario));

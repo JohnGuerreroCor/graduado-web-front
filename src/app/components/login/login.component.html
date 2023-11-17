@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col mt-3 mb-2">
+            <div class="col mb-2">
               <button
                 (click)="login()"
                 type="submit"
@@ -83,7 +83,12 @@
                 tabindex="3"
               >
                 Ingresar
-                <i *ngIf="cargando" class="fas fa-spinner fa-pulse"></i>
+                <span
+                  *ngIf="cargando"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
               </button>
             </div>
           </div>
@@ -96,15 +101,6 @@
               >
             </div>
           </div>
-          <!--  <div class="row">
-            <div class="col mb-4">
-              <small
-                (click)="informacion()"
-                class="font-usco-vt font-weight-bold"
-                ><i class="fa-solid fa-circle-info"></i> Tipos de Usuario</small
-              >
-            </div>
-          </div> -->
           <div>
             <small
               ><b class="version"
@@ -118,7 +114,7 @@
     </div>
   </div>
   <div
-    class="alert bg-usco-vt alert-dismissible fade show text-white mt-4"
+    class="alert bg-usco-vt alert-dismissible fade show text-white mt-3"
     role="alert"
   >
     <strong>!Atención!</strong> Si es primera vez que va ingresar <br />

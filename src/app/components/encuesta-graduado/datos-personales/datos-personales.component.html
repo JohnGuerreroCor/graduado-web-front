@@ -70,58 +70,50 @@
                   </div>
                   <div class="row mt-2">
                     <div class="col text-left">
-                      <div class="form-group">
-                        <mat-form-field
-                          class="example-full-width"
-                          appearance="outline"
-                        >
-                          <mat-label>Tipo de Indentificación</mat-label>
-                          <input
-                            matInput
-                            formControlName="identificacionTipo"
-                            readonly
-                          />
-                        </mat-form-field>
-                      </div>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Tipo de Indentificación</mat-label>
+                        <input
+                          matInput
+                          formControlName="identificacionTipo"
+                          readonly
+                        />
+                      </mat-form-field>
                     </div>
                     <div class="col text-left">
-                      <div class="form-group">
-                        <mat-form-field
-                          class="example-full-width"
-                          appearance="outline"
-                        >
-                          <mat-label>Indentificación</mat-label>
-                          <input
-                            matInput
-                            formControlName="identificacion"
-                            readonly
-                          />
-                        </mat-form-field>
-                      </div>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Indentificación</mat-label>
+                        <input
+                          matInput
+                          formControlName="identificacion"
+                          readonly
+                        />
+                      </mat-form-field>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col text-left">
-                      <div class="form-group">
-                        <mat-form-field
-                          class="example-full-width"
-                          appearance="outline"
-                        >
-                          <mat-label>Apellido(s)</mat-label>
-                          <input matInput formControlName="apellido" readonly />
-                        </mat-form-field>
-                      </div>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Apellido(s)</mat-label>
+                        <input matInput formControlName="apellido" readonly />
+                      </mat-form-field>
                     </div>
                     <div class="col text-left">
-                      <div class="form-group">
-                        <mat-form-field
-                          class="example-full-width"
-                          appearance="outline"
-                        >
-                          <mat-label>Nombre(s)</mat-label>
-                          <input matInput formControlName="nombre" readonly />
-                        </mat-form-field>
-                      </div>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Nombre(s)</mat-label>
+                        <input matInput formControlName="nombre" readonly />
+                      </mat-form-field>
                     </div>
                   </div>
                 </div>
@@ -131,120 +123,96 @@
                   class="col text-left"
                   *ngIf="listadoDatosPersonales[0]?.genero == 'M'"
                 >
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Genero</mat-label>
-                      <input matInput value="MASCULINO" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Genero</mat-label>
+                    <input matInput value="MASCULINO" readonly />
+                  </mat-form-field>
                 </div>
                 <div
                   class="col text-left"
                   *ngIf="listadoDatosPersonales[0]?.genero == 'F'"
                 >
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Genero</mat-label>
-                      <input matInput value="FAMENINO" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Genero</mat-label>
+                    <input matInput value="FAMENINO" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Estado Civil</mat-label>
-                      <input matInput formControlName="estadoCivil" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Estado Civil</mat-label>
+                    <input matInput formControlName="estadoCivil" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Grupo Sanguineo</mat-label>
-                      <input
-                        matInput
-                        formControlName="grupoSanguineo"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Grupo Sanguineo</mat-label>
+                    <input matInput formControlName="grupoSanguineo" readonly />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Fecha de nacimiento</mat-label>
-                      <input
-                        matInput
-                        formControlName="fechaNacimiento"
-                        readonly
-                      />
-                      <mat-hint>Día/Mes/Año</mat-hint>
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>País nacimiento</mat-label>
+                    <input matInput formControlName="paisNacimiento" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>País nacimiento</mat-label>
-                      <input
-                        matInput
-                        formControlName="paisNacimiento"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Departamento nacimiento</mat-label>
+                    <input
+                      matInput
+                      formControlName="departamentoNacimiento"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Departamento nacimiento</mat-label>
-                      <input
-                        matInput
-                        formControlName="departamentoNacimiento"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Ciudad nacimiento</mat-label>
+                    <input
+                      matInput
+                      formControlName="municipioNacimiento"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Ciudad nacimiento</mat-label>
-                      <input
-                        matInput
-                        formControlName="municipioNacimiento"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input
+                      matInput
+                      formControlName="fechaNacimiento"
+                      readonly
+                    />
+                    <mat-hint>Día/Mes/Año</mat-hint>
+                  </mat-form-field>
                 </div>
               </div>
             </fieldset>
@@ -254,69 +222,57 @@
               </legend>
               <div class="row mt-3">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>País expedición</mat-label>
-                      <input
-                        matInput
-                        formControlName="paisExpedicion"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>País expedición</mat-label>
+                    <input matInput formControlName="paisExpedicion" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Departamento expedición</mat-label>
-                      <input
-                        matInput
-                        formControlName="departamentoExpedicion"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Departamento expedición</mat-label>
+                    <input
+                      matInput
+                      formControlName="departamentoExpedicion"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Ciudad expedición</mat-label>
-                      <input
-                        matInput
-                        formControlName="municipioExpedicion"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Ciudad expedición</mat-label>
+                    <input
+                      matInput
+                      formControlName="municipioExpedicion"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
                   <div class="row">
                     <div class="col">
-                      <div class="form-group">
-                        <mat-form-field
-                          class="example-full-width"
-                          appearance="outline"
-                        >
-                          <mat-label>Fecha de expedición</mat-label>
-                          <input
-                            matInput
-                            formControlName="identificacionFechaExpedicion"
-                            readonly
-                          />
-                          <mat-hint>Día/Mes/Año</mat-hint>
-                        </mat-form-field>
-                      </div>
+                      <mat-form-field
+                        class="example-full-width"
+                        appearance="outline"
+                      >
+                        <mat-label>Fecha de expedición</mat-label>
+                        <input
+                          matInput
+                          formControlName="identificacionFechaExpedicion"
+                          readonly
+                        />
+                        <mat-hint>Día/Mes/Año</mat-hint>
+                      </mat-form-field>
                     </div>
                     <div
                       class="col-sm-2"
@@ -336,7 +292,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col text-right">
                   <button
                     class="btn btn-usco-vt"
@@ -346,7 +302,7 @@
                     expedición
                   </button>
                 </div>
-              </div>
+              </div> -->
             </fieldset>
             <fieldset class="scheduler-border shadow-sm">
               <legend class="scheduler-border font-usco-vt">
@@ -354,58 +310,42 @@
               </legend>
               <div class="row mt-3">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Email</mat-label>
-                      <input
-                        matInput
-                        formControlName="emailPersonal"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="emailPersonal" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Página</mat-label>
-                      <input matInput formControlName="paginaWeb" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Página</mat-label>
+                    <input matInput formControlName="paginaWeb" readonly />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Telefono (fijo)</mat-label>
-                      <input matInput formControlName="telefonoFijo" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Telefono (fijo)</mat-label>
+                    <input matInput formControlName="telefonoFijo" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Telefono (movil)</mat-label>
-                      <input
-                        matInput
-                        formControlName="telefonoMovil"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Telefono (movil)</mat-label>
+                    <input matInput formControlName="telefonoMovil" readonly />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
@@ -425,73 +365,59 @@
               </legend>
               <div class="row mt-3">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>País residencia</mat-label>
-                      <input
-                        matInput
-                        formControlName="paisResidencia"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>País residencia</mat-label>
+                    <input matInput formControlName="paisResidencia" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Departamento residencia</mat-label>
-                      <input
-                        matInput
-                        formControlName="departamentoResidencia"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Departamento residencia</mat-label>
+                    <input
+                      matInput
+                      formControlName="departamentoResidencia"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Ciudad residencia</mat-label>
-                      <input
-                        matInput
-                        formControlName="municipioResidencia"
-                        readonly
-                      />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Ciudad residencia</mat-label>
+                    <input
+                      matInput
+                      formControlName="municipioResidencia"
+                      readonly
+                    />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Barrio</mat-label>
-                      <input matInput formControlName="barrio" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Barrio</mat-label>
+                    <input matInput formControlName="barrio" readonly />
+                  </mat-form-field>
                 </div>
                 <div class="col text-left">
-                  <div class="form-group">
-                    <mat-form-field
-                      class="example-full-width"
-                      appearance="outline"
-                    >
-                      <mat-label>Dirección</mat-label>
-                      <input matInput formControlName="direccion" readonly />
-                    </mat-form-field>
-                  </div>
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                  >
+                    <mat-label>Dirección</mat-label>
+                    <input matInput formControlName="direccion" readonly />
+                  </mat-form-field>
                 </div>
               </div>
               <div class="row">

@@ -5,6 +5,7 @@ export class Usuario {
   per_codigo!: number;
   nombre!: String;
   apellido!: String;
+  identificacion!:string;
   uaa!: String;
   roles: string[] = [];
 }

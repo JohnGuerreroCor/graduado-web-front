@@ -2,43 +2,35 @@
   <i class="fa-solid fa-circle-info"></i> Datos de contacto
 </h2>
 <mat-dialog-content>
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col pl-4 pr-4">
       <form [formGroup]="formDatosContacto">
         <div class="row">
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Correo personal</mat-label>
-                <input matInput formControlName="emailPersonal" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Correo personal</mat-label>
+              <input matInput formControlName="emailPersonal" />
+            </mat-form-field>
           </div>
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Página</mat-label>
-                <input matInput formControlName="pagina" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Página</mat-label>
+              <input matInput formControlName="pagina" />
+            </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Telefono (fijo)</mat-label>
-                <input matInput type="number" formControlName="telefonoFijo" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Telefono (fijo)</mat-label>
+              <input matInput type="number" formControlName="telefonoFijo" />
+            </mat-form-field>
           </div>
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Telefono (movil)</mat-label>
-                <input matInput formControlName="telefonoMovil" type="number" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Telefono (movil)</mat-label>
+              <input matInput formControlName="telefonoMovil" type="number" />
+            </mat-form-field>
           </div>
         </div>
       </form>
@@ -46,14 +38,14 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+  <button class="btn btn-warning mr-2" mat-dialog-close>
+    <i class="fa-solid fa-xmark"></i> Cancelar
+  </button>
   <button
     class="btn btn-success"
     [disabled]="!formDatosContacto.valid"
     (click)="generarDatosContacto()"
   >
     <i class="fa-solid fa-floppy-disk"></i> Guardar
-  </button>
-  <button class="btn btn-warning ml-2" mat-dialog-close>
-    <i class="fa-solid fa-xmark"></i> Cancelar
   </button>
 </mat-dialog-actions>

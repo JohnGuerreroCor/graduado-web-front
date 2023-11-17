@@ -8,6 +8,7 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
+import { WebparametroService } from 'src/app/services/webparametro.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router: Router,
+    public webparametroService: WebparametroService,
     private formBuilder: FormBuilder
   ) {
     this.usuario = new Usuario();
@@ -59,9 +61,15 @@ export class LoginComponent implements OnInit {
           icon: 'info',
           title: 'Ya se ha iniciado sesión.',
         });
-        this.router.navigate(['inicio']);
+        this.router.navigate(['encuesta-seguimiento']);
       } else {
-        this.router.navigate(['token']);
+        this.webparametroService.obtenerWebParametro().subscribe((data) => {
+          if (data[0].webValor === '1') {
+            this.router.navigate(['/login']);
+          } else {
+            this.router.navigate(['/encuesta-seguimiento']);
+          }
+        });
       }
     }
   }
@@ -97,23 +105,24 @@ export class LoginComponent implements OnInit {
       (response) => {
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          },
-        });
-
-        Toast.fire({
+        // Mostrar mensaje de éxito y redirigir
+        Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión exitoso.',
+          confirmButtonColor: '#8f141b',
+          confirmButtonText: 'Listo',
+          showClass: {
+            popup: 'slide-top',
+          },
         });
-        this.router.navigate(['/token']);
+        // Redirigir al usuario a la página de inicio o de token según el valor del parámetro web
+        this.webparametroService.obtenerWebParametro().subscribe((data) => {
+          if (data[0].webValor === '1') {
+            this.router.navigate(['/token']);
+          } else {
+            this.router.navigate(['/encuesta-seguimiento']);
+          }
+        });
       },
       (err) => this.fError(err)
     );

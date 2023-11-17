@@ -5,15 +5,13 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { Pais } from '../models/pais';
-import { Departamento } from '../models/departamento';
-import { Municipio } from '../models/municipio';
+import { MencionReconocimiento } from '../models/mencion-reconocimiento';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UbicacionService {
-  private url: string = `${environment.URL_BACKEND}/ubicacion`;
+export class MencionReconocimientoService {
+  private url: string = `${environment.URL_BACKEND}/mencionreconocimiento`;
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   userLogeado: String = this.authservice.user.username;
@@ -43,11 +41,16 @@ export class UbicacionService {
     return false;
   }
 
-  obtenerPaises(): Observable<Pais[]> {
+  obtenerMencionesReconocimiento(
+    id: string
+  ): Observable<MencionReconocimiento[]> {
     return this.http
-      .get<Pais[]>(`${this.url}/obtener-paises`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<MencionReconocimiento[]>(
+        `${this.url}/obtener-mencion-reconocimiento/${id}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -58,11 +61,17 @@ export class UbicacionService {
       );
   }
 
-  obtenerMunicipios(): Observable<Municipio[]> {
+  obtenerReporteMencionesReconocimiento(
+    inicio: any,
+    fin: any
+  ): Observable<MencionReconocimiento[]> {
     return this.http
-      .get<Municipio[]>(`${this.url}/obtener-municipios`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<MencionReconocimiento[]>(
+        `${this.url}/obtener-reporte-mencion-reconocimiento/${inicio}/${fin}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -71,34 +80,5 @@ export class UbicacionService {
           return throwError(e);
         })
       );
-  }
-
-  obtenerDepartamentosPorPais(codigo: number): Observable<Departamento[]> {
-    return this.http.get<Departamento[]>(
-      `${this.url}/obtener-departamentos-pais/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  obtenerMunicipiosPorDepartamento(codigo: number): Observable<Municipio[]> {
-    return this.http.get<Municipio[]>(
-      `${this.url}/obtener-municipios-departamento/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  obtenerDepartamentosPorMunicipio(codigo: number): Observable<Departamento[]> {
-    console.log('Entra');
-    return this.http.get<Departamento[]>(
-      `${this.url}/obtener-departamentos-municipio/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  obtenerPaisesPorDepartamento(codigo: number): Observable<Pais[]> {
-    return this.http.get<Pais[]>(
-      `${this.url}/obtener-paises-departamento/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
   }
 }

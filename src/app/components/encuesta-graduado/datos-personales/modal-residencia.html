@@ -2,73 +2,63 @@
   <i class="fa-solid fa-circle-info"></i> Datos de residencia
 </h2>
 <mat-dialog-content>
-  <div class="row mt-5">
+  <div class="row mt-4">
     <div class="col pl-4 pr-4">
       <form [formGroup]="formDatosResidencia">
         <div class="row">
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>País residencia</mat-label>
-                <mat-select formControlName="paisResidenciaCodigo">
-                  <mat-option
-                    *ngFor="let pais of listadoPaises"
-                    [value]="pais.codigo"
-                    (click)="obtenerDepartamentosPais(pais.codigo)"
-                    >{{ pais.nombre | uppercase }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>País residencia</mat-label>
+              <mat-select formControlName="paisResidenciaCodigo">
+                <mat-option
+                  *ngFor="let pais of listadoPaises"
+                  [value]="pais.codigo"
+                  (click)="obtenerDepartamentosPais(pais.codigo)"
+                  >{{ pais.nombre | uppercase }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
           </div>
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Departamento residencia</mat-label>
-                <mat-select formControlName="departamentoResidenciaCodigo">
-                  <mat-option
-                    *ngFor="
-                      let departamento of listadoDepartamentosResidencia
-                    "
-                    [value]="departamento.codigo"
-                    (click)="obtenerMunicipiosDepartamento(departamento.codigo)"
-                    >{{ departamento.nombre }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Departamento residencia</mat-label>
+              <mat-select formControlName="departamentoResidenciaCodigo">
+                <mat-option
+                  *ngFor="
+                    let departamento of listadoDepartamentosResidencia
+                  "
+                  [value]="departamento.codigo"
+                  (click)="obtenerMunicipiosDepartamento(departamento.codigo)"
+                  >{{ departamento.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
           </div>
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Ciudad residencia</mat-label>
-                <mat-select formControlName="municipioResidenciaCodigo">
-                  <mat-option
-                    *ngFor="let municipio of listadoMunicipiosResidencia"
-                    [value]="municipio.codigo"
-                    >{{ municipio.nombre }}</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Ciudad residencia</mat-label>
+              <mat-select formControlName="municipioResidenciaCodigo">
+                <mat-option
+                  *ngFor="let municipio of listadoMunicipiosResidencia"
+                  [value]="municipio.codigo"
+                  >{{ municipio.nombre }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
         <div class="row">
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Barrio</mat-label>
-                <input matInput formControlName="barrio" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Barrio</mat-label>
+              <input matInput formControlName="barrio" />
+            </mat-form-field>
           </div>
           <div class="col text-left">
-            <div class="form-group">
-              <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Dirección</mat-label>
-                <input matInput formControlName="direccion" />
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Dirección</mat-label>
+              <input matInput formControlName="direccion" />
+            </mat-form-field>
           </div>
         </div>
       </form>
@@ -76,14 +66,14 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+  <button class="btn btn-warning mr-2" mat-dialog-close>
+    <i class="fa-solid fa-xmark"></i> Cancelar
+  </button>
   <button
     class="btn btn-success"
     [disabled]="!formDatosResidencia.valid"
     (click)="generarDatosResidencia()"
   >
     <i class="fa-solid fa-floppy-disk"></i> Guardar
-  </button>
-  <button class="btn btn-warning ml-2" mat-dialog-close>
-    <i class="fa-solid fa-xmark"></i> Cancelar
   </button>
 </mat-dialog-actions>

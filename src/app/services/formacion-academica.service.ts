@@ -5,15 +5,14 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { Pais } from '../models/pais';
-import { Departamento } from '../models/departamento';
-import { Municipio } from '../models/municipio';
+import { NivelAcademico } from '../models/nivel-academico';
+import { HistorialAcademico } from '../models/historial-academico';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UbicacionService {
-  private url: string = `${environment.URL_BACKEND}/ubicacion`;
+export class FormacionAcademicaService {
+  private url: string = `${environment.URL_BACKEND}/formacionAcademica`;
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   userLogeado: String = this.authservice.user.username;
@@ -43,9 +42,9 @@ export class UbicacionService {
     return false;
   }
 
-  obtenerPaises(): Observable<Pais[]> {
+  obtenerNivelesAcademicos(): Observable<NivelAcademico[]> {
     return this.http
-      .get<Pais[]>(`${this.url}/obtener-paises`, {
+      .get<NivelAcademico[]>(`${this.url}/obtener-niveles-academicos`, {
         headers: this.aggAutorizacionHeader(),
       })
       .pipe(
@@ -58,11 +57,14 @@ export class UbicacionService {
       );
   }
 
-  obtenerMunicipios(): Observable<Municipio[]> {
+  obtenerHistorialAcademico(id: string): Observable<HistorialAcademico[]> {
     return this.http
-      .get<Municipio[]>(`${this.url}/obtener-municipios`, {
-        headers: this.aggAutorizacionHeader(),
-      })
+      .get<HistorialAcademico[]>(
+        `${this.url}/obtener-historial-academico/${id}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -73,31 +75,43 @@ export class UbicacionService {
       );
   }
 
-  obtenerDepartamentosPorPais(codigo: number): Observable<Departamento[]> {
-    return this.http.get<Departamento[]>(
-      `${this.url}/obtener-departamentos-pais/${codigo}`,
+  obtenerReporteHistorialAcademico(
+    inicio: any,
+    fin: any
+  ): Observable<HistorialAcademico[]> {
+    return this.http
+      .get<HistorialAcademico[]>(
+        `${this.url}/obtener-reporte-historial-academico/${inicio}/${fin}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
+      .pipe(
+        catchError((e) => {
+          if (this.isNoAutorizado(e)) {
+            return throwError(e);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  registrarHistorialAcademico(
+    historialAcademico: HistorialAcademico
+  ): Observable<number> {
+    return this.http.put<number>(
+      `${this.url}/registrar-historial-academico`,
+      historialAcademico,
       { headers: this.aggAutorizacionHeader() }
     );
   }
 
-  obtenerMunicipiosPorDepartamento(codigo: number): Observable<Municipio[]> {
-    return this.http.get<Municipio[]>(
-      `${this.url}/obtener-municipios-departamento/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  obtenerDepartamentosPorMunicipio(codigo: number): Observable<Departamento[]> {
-    console.log('Entra');
-    return this.http.get<Departamento[]>(
-      `${this.url}/obtener-departamentos-municipio/${codigo}`,
-      { headers: this.aggAutorizacionHeader() }
-    );
-  }
-
-  obtenerPaisesPorDepartamento(codigo: number): Observable<Pais[]> {
-    return this.http.get<Pais[]>(
-      `${this.url}/obtener-paises-departamento/${codigo}`,
+  actualizarHistorialAcademico(
+    historialAcademico: HistorialAcademico
+  ): Observable<number> {
+    return this.http.put<number>(
+      `${this.url}/actualizar-historial-academico`,
+      historialAcademico,
       { headers: this.aggAutorizacionHeader() }
     );
   }
