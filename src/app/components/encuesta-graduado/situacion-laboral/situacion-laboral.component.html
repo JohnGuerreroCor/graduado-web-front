@@ -2,202 +2,218 @@
   <div class="card rounded-2 p-0 shadow-sm mt-5">
     <div
       class="card-header ml-4 mb-3 mr-4 cursor-select"
-      [routerLink]="['/inicio']"
       routerLinkActive="router-link-active"
     >
       <h4 class="font-usco-default">
-        <strong>Situación Laboral</strong>
+        <strong>Situación laboral</strong>
       </h4>
     </div>
-    <div class="card-body ls">
+    <div class="card-body">
       <div class="row">
         <div class="col">
-          <form class="pl-4 pr-4">
-            <div class="row text-left mb-3">
+          <fieldset class="scheduler-border shadow-sm">
+            <legend class="scheduler-border font-usco-vt">
+              Satisfacción de las competencias
+            </legend>
+            <div class="row mt-2">
+              <div class="col text-left">
+                <form [formGroup]="formulario">
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >1). ¿Trabaja en la actualidad?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta1">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaUno"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >2). ¿En qué sector trabaja?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta2">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaDos"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >3). ¿Cuál es su rol o posición en esa actividad?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta3">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaTres"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >4). ¿Es este su primer empleo?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta4">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaCuatro"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >5). ¿Cuántos meses después de graduarse obtuvo su primer
+                      empleo?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta5">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaCinco"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >6). ¿Qué método o canal de búsqueda le permitió conseguir
+                      su empleo actual?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta6">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaSeis"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >7). ¿Qué tipo de contrato tiene con la empresa donde
+                      trabaja?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta7">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaSiete"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >8). ¿Cuál es la naturaleza de su actividad
+                      económica?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta8">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaOcho"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >9). ¿Qué tan relacionado está su empleo con la carrera
+                      que estudió?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta9">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaNueve"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <small
+                      class="font-usco-bl font-usco-default font-weight-bold"
+                      >10). ¿Cuál es su rango salarial?</small
+                    >
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-select formControlName="codigoRespuesta10">
+                        <mat-option
+                          *ngFor="let respuesta of listadoEscalaDiez"
+                          [value]="respuesta.codigo"
+                          >{{ respuesta.respuesta }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row text-right">
               <div class="col">
-                <h5 class="font-usco-vt font-weight-bold">
-                  Satisfacción de las competencias
-                </h5>
-                <hr class="hr-usco-vt" />
+                <button class="btn btn-success">
+                  <i class="fa-solid fa-floppy-disk"></i> Guardar
+                </button>
               </div>
             </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >1. ¿En la actualidad trabaja?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >2. ¿Sector?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >3. ¿En esa actividad usted es?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >4. ¿Es este su primer empleo?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >6. ¿Qué canal de búsqueda le permitió conseguir el empleo
-                    actual?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >7. ¿Qué tipo de vinculación tiene con la empresa donde
-                    labora?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >8. ¿Su actividad económica es?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >9. ¿Qué tan relacionado esta su empleo con la carrera que
-                    estudio?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default font-weight-bold"
-                    >10. ¿Cuál es su rango salarial?</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <button
-            class="btn btn-success mr-2"
-            data-toggle="tooltip"
-            data-placement="top"
-            title="guardar"
-          >
-            <i class="fa-solid fa-floppy-disk"></i> Guardar
-          </button>
-          <!-- <button
-            class="btn btn-warning"
-            data-toggle="tooltip"
-            data-placement="top"
-            title="cancelar"
-          >
-            <i class="fa-solid fa-xmark"></i> Cancelar
-          </button> -->
+          </fieldset>
         </div>
       </div>
     </div>

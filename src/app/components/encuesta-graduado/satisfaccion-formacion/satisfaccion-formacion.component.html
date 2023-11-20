@@ -21,58 +21,6 @@
                 <hr class="hr-usco-vt" />
               </div>
             </div>
-            <!--  <div class="row">
-              <div class="col text-left">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default"
-                    >1. Exponer las ideas por medios escritos.</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default"
-                    >1. Exponer las ideas por medios escritos.</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <small class="font-usco-bl font-usco-default"
-                    >1. Exponer las ideas por medios escritos.</small
-                  >
-                  <mat-form-field class="example-full-width">
-                    <mat-label>Selecciones una opción</mat-label>
-                    <mat-select>
-                      <mat-option value="option1">Option 1</mat-option>
-                      <mat-option value="option2">Option 2</mat-option>
-                      <mat-option value="option3">Option 3</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div> -->
-            <!--  <div class="row">
-              <div class="col text-left">
-                <p>Escala likert</p>
-              </div>
-            </div> -->
             <table class="table table-hover text-left font-usco-default">
               <thead class="thead-dark">
                 <tr style="font-size: 12px">
@@ -87,7 +35,10 @@
                 <tr>
                   <th scope="row">1. Exponer las ideas por medios escritos.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses1" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses1"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -95,7 +46,10 @@
                 <tr>
                   <th scope="row">2. Exponer oralmente con claridad.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses2" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses2"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -105,7 +59,10 @@
                     3. Persuadir y convencer a sus interlocutores.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -116,7 +73,10 @@
                     icónico, lenguaje no verbal, etc.).
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -127,7 +87,10 @@
                     multiculturales.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -138,7 +101,10 @@
                     de texto, hojas de cálculo, correo electrónico, etc.).
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -146,7 +112,10 @@
                 <tr>
                   <th scope="row">7. Aprender y mantenerse actualizado.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -154,7 +123,10 @@
                 <tr>
                   <th scope="row">8. Ser creativo e innovador.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -164,7 +136,10 @@
                     9. Buscar, analizar, administrar y compartir información.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -174,7 +149,10 @@
                     10. Crear, investigar y adoptar tecnología.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -185,7 +163,10 @@
                     tecnología.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -195,7 +176,10 @@
                     12. Identificar, plantear y resolver problemas.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -205,7 +189,10 @@
                     13. Capacidad de abstracción, análisis y síntesis.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -213,7 +200,10 @@
                 <tr>
                   <th scope="row">14. Comprender la realidad que lo rodea.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -221,7 +211,10 @@
                 <tr>
                   <th scope="row">15. Asumir una cultura de convivencia.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -231,7 +224,10 @@
                     16. Asumir responsabilidades y tomar decisiones.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -263,7 +259,10 @@
                     tal forma que se logran los objetivos planteados.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -274,7 +273,10 @@
                     (paquetes estadísticos, software de diseño, etc.).
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -282,7 +284,10 @@
                 <tr>
                   <th scope="row">19. Formular y ejecutar proyectos.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -292,7 +297,10 @@
                     20. Trabajar en equipo para alcanzar metas comunes.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -303,7 +311,10 @@
                     permanente.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -314,7 +325,10 @@
                     laboral.
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -325,7 +339,10 @@
                     diversos).
                   </th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>
@@ -333,7 +350,10 @@
                 <tr>
                   <th scope="row">24. Trabajo bajo presión.</th>
                   <td *ngFor="let option of options">
-                    <mat-radio-group [(ngModel)]="responses" [ngModelOptions]="{standalone: true}">
+                    <mat-radio-group
+                      [(ngModel)]="responses"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
                       <mat-radio-button [value]="option"> </mat-radio-button>
                     </mat-radio-group>
                   </td>

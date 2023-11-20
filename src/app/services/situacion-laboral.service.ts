@@ -5,16 +5,15 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { ExpectativaCapacitacionEscala } from '../models/expectativa-capacitacion-escala';
-import { ExpectativaCapacitacionRespuesta } from '../models/expectativa-capacitacion-respuesta';
-import { ReporteExpectativaCapacitacion } from '../models/reporte-expectativa-capacitacion';
-import { ExpectativaCapacitacionPregunta } from '../models/expectativa-capacitacion-pregunta';
+import { SituacionLaboralPregunta } from '../models/situacion-laboral-pregunta';
+import { SituacionLaboralEscala } from '../models/situacion-laboral-escala';
+import { SituacionLaboralRespuesta } from '../models/situacion-laboral-respuesta';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ExpectativaCapacitacionService {
-  private url: string = `${environment.URL_BACKEND}/expectativacapacitacion`;
+export class SituacionLaboralService {
+  private url: string = `${environment.URL_BACKEND}/situacionlaboral`;
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   userLogeado: String = this.authservice.user.username;
@@ -44,9 +43,9 @@ export class ExpectativaCapacitacionService {
     return false;
   }
 
-  obtenerPregunta(): Observable<ExpectativaCapacitacionPregunta[]> {
+  obtenerPregunta(): Observable<SituacionLaboralPregunta[]> {
     return this.http
-      .get<ExpectativaCapacitacionPregunta[]>(`${this.url}/obtener-pregunta`, {
+      .get<SituacionLaboralPregunta[]>(`${this.url}/obtener-pregunta`, {
         headers: this.aggAutorizacionHeader(),
       })
       .pipe(
@@ -59,14 +58,11 @@ export class ExpectativaCapacitacionService {
       );
   }
 
-  obtenerEscala(codigo: number): Observable<ExpectativaCapacitacionEscala[]> {
+  obtenerEscala(codigo: number): Observable<SituacionLaboralEscala[]> {
     return this.http
-      .get<ExpectativaCapacitacionEscala[]>(
-        `${this.url}/obtener-escala/${codigo}`,
-        {
-          headers: this.aggAutorizacionHeader(),
-        }
-      )
+      .get<SituacionLaboralEscala[]>(`${this.url}/obtener-escala/${codigo}`, {
+        headers: this.aggAutorizacionHeader(),
+      })
       .pipe(
         catchError((e) => {
           if (this.isNoAutorizado(e)) {
@@ -79,9 +75,9 @@ export class ExpectativaCapacitacionService {
 
   obtenerRespuestasIdentificacion(
     id: string
-  ): Observable<ExpectativaCapacitacionRespuesta[]> {
+  ): Observable<SituacionLaboralRespuesta[]> {
     return this.http
-      .get<ExpectativaCapacitacionRespuesta[]>(
+      .get<SituacionLaboralRespuesta[]>(
         `${this.url}/obtener-respuestas-identificacion/${id}`,
         {
           headers: this.aggAutorizacionHeader(),
@@ -97,43 +93,22 @@ export class ExpectativaCapacitacionService {
       );
   }
 
-  obtenerRerporteExpectativaCapacitacion(
-    inicio: any,
-    fin: any
-  ): Observable<ReporteExpectativaCapacitacion[]> {
-    return this.http
-      .get<ReporteExpectativaCapacitacion[]>(
-        `${this.url}/obtener-reporte-excpectativa-capacitacion/${inicio}/${fin}`,
-        {
-          headers: this.aggAutorizacionHeader(),
-        }
-      )
-      .pipe(
-        catchError((e) => {
-          if (this.isNoAutorizado(e)) {
-            return throwError(e);
-          }
-          return throwError(e);
-        })
-      );
-  }
-
   registrarExpectativaCapacitacionRespuesta(
-    expectativaCapacitacionRespuesta: ExpectativaCapacitacionRespuesta
+    situacionLaboralRespuesta: SituacionLaboralRespuesta
   ): Observable<number> {
     return this.http.put<number>(
-      `${this.url}/registrar-expectativa-capacitacion`,
-      expectativaCapacitacionRespuesta,
+      `${this.url}/registrar-situacion-laboral`,
+      situacionLaboralRespuesta,
       { headers: this.aggAutorizacionHeader() }
     );
   }
 
   actualizarExpectativaCapacitacionRespuesta(
-    expectativaCapacitacionRespuesta: ExpectativaCapacitacionRespuesta
+    situacionLaboralRespuesta: SituacionLaboralRespuesta
   ): Observable<number> {
     return this.http.put<number>(
-      `${this.url}/actualizar-expectativa-capacitacion`,
-      expectativaCapacitacionRespuesta,
+      `${this.url}/actualizar-situacion-laboral`,
+      situacionLaboralRespuesta,
       { headers: this.aggAutorizacionHeader() }
     );
   }
