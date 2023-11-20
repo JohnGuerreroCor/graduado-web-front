@@ -214,7 +214,7 @@ export class ModalMembresia {
   private crearFormularioMencionReconocimiento(): void {
     this.formularioMencionReconocimiento = this.formBuilder.group({
       codigo: new FormControl(''),
-      personaCodigo: new FormControl('', Validators.required),
+      personaCodigo: new FormControl(''),
       institucion: new FormControl('', Validators.required),
       tipo: new FormControl('', Validators.required),
       ambitoCodigo: new FormControl('', Validators.required),

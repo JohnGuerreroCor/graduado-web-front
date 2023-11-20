@@ -268,7 +268,7 @@ export class ModalEstudio {
   private crearFormularioFormacionAcademica(): void {
     this.formularioFormacionAcademica = this.formBuilder.group({
       codigo: new FormControl(''),
-      perCodigo: new FormControl('', Validators.required),
+      perCodigo: new FormControl(''),
       titulo: new FormControl('', Validators.required),
       nivelAcademicoCodigo: new FormControl('', Validators.required),
       paisCodigo: new FormControl(''),
