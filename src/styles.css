@@ -10,6 +10,10 @@ body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   background-color: #fafafa !important;
 }
+label {
+  display: inline-block;
+  margin-bottom: 0 !important;
+}
 
 h1,
 h2,

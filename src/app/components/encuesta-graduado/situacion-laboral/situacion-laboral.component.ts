@@ -21,6 +21,7 @@ import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { SituacionLaboralService } from 'src/app/services/situacion-laboral.service';
 import { SituacionLaboralEscala } from 'src/app/models/situacion-laboral-escala';
+import { SituacionLaboralRespuesta } from 'src/app/models/situacion-laboral-respuesta';
 
 @Component({
   selector: 'app-situacion-laboral',
@@ -65,7 +66,7 @@ export class SituacionLaboralComponent {
     public ubicacionService: UbicacionService,
     public datosPersonalesService: DatosPersonalesService,
     private router: Router,
-    public expectativaCapacitacionService: ExpectativaCapacitacionService,
+
     public situacionLaboralService: SituacionLaboralService
   ) {
     this.identificacion = '' + authService.user.identificacion;
@@ -119,8 +120,7 @@ export class SituacionLaboralComponent {
   }
 
   generarFormulario(): void {
-    let element: ExpectativaCapacitacionRespuesta =
-      new ExpectativaCapacitacionRespuesta();
+    let element: SituacionLaboralRespuesta = new SituacionLaboralRespuesta();
     element.personaCodigo = this.authService.user.per_codigo;
     if (this.editar) {
       for (let index = 0; index < 10; index++) {
@@ -149,38 +149,28 @@ export class SituacionLaboralComponent {
     }
   }
 
-  registrarFormulario(
-    expectativaCapacitacionRespuesta: ExpectativaCapacitacionRespuesta
-  ) {
-    this.expectativaCapacitacionService
-      .registrarExpectativaCapacitacionRespuesta(
-        expectativaCapacitacionRespuesta
-      )
-      .subscribe(
-        (data) => {
-          if (data > 0) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Registrado',
-              text: '¡Operación exitosa!',
-              showConfirmButton: false,
-              timer: 2500,
-            });
-          } else {
-            this.mensajeError();
-          }
-        },
-        (err) => this.fError(err)
-      );
+  registrarFormulario(situacionLaboralRespuesta: SituacionLaboralRespuesta) {
+    this.situacionLaboralService.registrar(situacionLaboralRespuesta).subscribe(
+      (data) => {
+        if (data > 0) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registrado',
+            text: '¡Operación exitosa!',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        } else {
+          this.mensajeError();
+        }
+      },
+      (err) => this.fError(err)
+    );
   }
 
-  actualizarFormulario(
-    expectativaCapacitacionRespuesta: ExpectativaCapacitacionRespuesta
-  ) {
-    this.expectativaCapacitacionService
-      .actualizarExpectativaCapacitacionRespuesta(
-        expectativaCapacitacionRespuesta
-      )
+  actualizarFormulario(situacionLaboralRespuesta: SituacionLaboralRespuesta) {
+    this.situacionLaboralService
+      .actualizar(situacionLaboralRespuesta)
       .subscribe(
         (data) => {
           if (data > 0) {
@@ -198,22 +188,20 @@ export class SituacionLaboralComponent {
       );
   }
 
-  editarExpectativaCapacitacionRespuesta(
-    element: ExpectativaCapacitacionRespuesta[]
-  ) {
+  editarExpectativaCapacitacionRespuesta(element: SituacionLaboralRespuesta[]) {
     console.log(element);
 
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
     this.formulario.get('codigo2')!.setValue(element[1].codigo);
     this.formulario.get('codigo3')!.setValue(element[2].codigo);
-    this.formulario.get('codigo4')!.setValue(element[2].codigo);
-    this.formulario.get('codigo5')!.setValue(element[2].codigo);
-    this.formulario.get('codigo6')!.setValue(element[2].codigo);
-    this.formulario.get('codigo7')!.setValue(element[2].codigo);
-    this.formulario.get('codigo8')!.setValue(element[2].codigo);
-    this.formulario.get('codigo9')!.setValue(element[2].codigo);
-    this.formulario.get('codigo10')!.setValue(element[2].codigo);
+    this.formulario.get('codigo4')!.setValue(element[3].codigo);
+    this.formulario.get('codigo5')!.setValue(element[4].codigo);
+    this.formulario.get('codigo6')!.setValue(element[5].codigo);
+    this.formulario.get('codigo7')!.setValue(element[6].codigo);
+    this.formulario.get('codigo8')!.setValue(element[7].codigo);
+    this.formulario.get('codigo9')!.setValue(element[8].codigo);
+    this.formulario.get('codigo10')!.setValue(element[9].codigo);
     this.formulario.get('personaCodigo')!.setValue(element[0].personaCodigo);
     this.formulario
       .get('codigoRespuesta1')!
@@ -338,30 +326,5 @@ export class SituacionLaboralComponent {
     this.situacionLaboralService.obtenerEscala(10).subscribe((data) => {
       this.listadoEscalaDiez = data;
     });
-  }
-
-  ngOnInit() {
-    this.expectativaCapacitacionService.obtenerPregunta().subscribe((data) => {
-      this.listadoPregunta = data;
-      this.cuestionario$ = this.crearCuestionario(data);
-    });
-  }
-
-  crearCuestionario(
-    element: ExpectativaCapacitacionPregunta[]
-  ): Observable<ExpectativaCapacitacionCuestionario[]> {
-    console.log('Element:: ', element);
-
-    return forkJoin(
-      element.map((pregunta) =>
-        this.expectativaCapacitacionService.obtenerEscala(pregunta.codigo).pipe(
-          map((respuestas: any) => ({
-            codigo: pregunta.codigo,
-            pregunta: pregunta.pregunta,
-            respuestas: respuestas,
-          }))
-        )
-      )
-    );
   }
 }

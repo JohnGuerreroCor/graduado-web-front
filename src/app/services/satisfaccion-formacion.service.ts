@@ -5,15 +5,15 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
-import { SituacionLaboralPregunta } from '../models/situacion-laboral-pregunta';
-import { SituacionLaboralEscala } from '../models/situacion-laboral-escala';
-import { SituacionLaboralRespuesta } from '../models/situacion-laboral-respuesta';
+import { CompetenciaRespuesta } from '../models/competencia-respuesta';
+import { CompetenciaPregunta } from '../models/competencia-pregunta';
+import { CompetenciaEscala } from '../models/competencia-escala';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SituacionLaboralService {
-  private url: string = `${environment.URL_BACKEND}/situacionlaboral`;
+export class SatisfaccionFormacionService {
+  private url: string = `${environment.URL_BACKEND}/satisfaccionformacion`;
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   userLogeado: String = this.authservice.user.username;
@@ -43,9 +43,9 @@ export class SituacionLaboralService {
     return false;
   }
 
-  obtenerPregunta(): Observable<SituacionLaboralPregunta[]> {
+  obtenerPregunta(): Observable<CompetenciaPregunta[]> {
     return this.http
-      .get<SituacionLaboralPregunta[]>(`${this.url}/obtener-pregunta`, {
+      .get<CompetenciaPregunta[]>(`${this.url}/obtener-pregunta`, {
         headers: this.aggAutorizacionHeader(),
       })
       .pipe(
@@ -58,9 +58,9 @@ export class SituacionLaboralService {
       );
   }
 
-  obtenerEscala(codigo: number): Observable<SituacionLaboralEscala[]> {
+  obtenerEscala(codigo: number): Observable<CompetenciaEscala[]> {
     return this.http
-      .get<SituacionLaboralEscala[]>(`${this.url}/obtener-escala/${codigo}`, {
+      .get<CompetenciaEscala[]>(`${this.url}/obtener-escala/${codigo}`, {
         headers: this.aggAutorizacionHeader(),
       })
       .pipe(
@@ -73,12 +73,12 @@ export class SituacionLaboralService {
       );
   }
 
-  obtenerRespuestasIdentificacion(
+  obtenerRespuestasTipoUnoIdentificacion(
     id: string
-  ): Observable<SituacionLaboralRespuesta[]> {
+  ): Observable<CompetenciaRespuesta[]> {
     return this.http
-      .get<SituacionLaboralRespuesta[]>(
-        `${this.url}/obtener-respuestas-identificacion/${id}`,
+      .get<CompetenciaRespuesta[]>(
+        `${this.url}/obtener-respuestas-tipo-uno-identificacion/${id}`,
         {
           headers: this.aggAutorizacionHeader(),
         }
@@ -93,22 +93,58 @@ export class SituacionLaboralService {
       );
   }
 
-  registrar(
-    situacionLaboralRespuesta: SituacionLaboralRespuesta
-  ): Observable<number> {
+  obtenerRespuestasTipoDosIdentificacion(
+    id: string
+  ): Observable<CompetenciaRespuesta[]> {
+    return this.http
+      .get<CompetenciaRespuesta[]>(
+        `${this.url}/obtener-respuestas-tipo-dos-identificacion/${id}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
+      .pipe(
+        catchError((e) => {
+          if (this.isNoAutorizado(e)) {
+            return throwError(e);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  obtenerRespuestasTipoTresIdentificacion(
+    id: string
+  ): Observable<CompetenciaRespuesta[]> {
+    return this.http
+      .get<CompetenciaRespuesta[]>(
+        `${this.url}/obtener-respuestas-tipo-tres-identificacion/${id}`,
+        {
+          headers: this.aggAutorizacionHeader(),
+        }
+      )
+      .pipe(
+        catchError((e) => {
+          if (this.isNoAutorizado(e)) {
+            return throwError(e);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  registrar(competenciaRespuesta: CompetenciaRespuesta): Observable<number> {
     return this.http.put<number>(
-      `${this.url}/registrar-situacion-laboral`,
-      situacionLaboralRespuesta,
+      `${this.url}/registrar-satisfaccion-formacion`,
+      competenciaRespuesta,
       { headers: this.aggAutorizacionHeader() }
     );
   }
 
-  actualizar(
-    situacionLaboralRespuesta: SituacionLaboralRespuesta
-  ): Observable<number> {
+  actualizar(competenciaRespuesta: CompetenciaRespuesta): Observable<number> {
     return this.http.put<number>(
-      `${this.url}/actualizar-situacion-laboral`,
-      situacionLaboralRespuesta,
+      `${this.url}/actualizar-satisfaccion-formacion`,
+      competenciaRespuesta,
       { headers: this.aggAutorizacionHeader() }
     );
   }

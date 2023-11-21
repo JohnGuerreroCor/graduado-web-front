@@ -78,17 +78,6 @@
                 </form>
               </div>
             </div>
-            <div class="row text-right">
-              <div class="col">
-                <button
-                  class="btn btn-success"
-                  (click)="generarFormulario()"
-                  [disabled]="!formulario.valid"
-                >
-                  <i class="fa-solid fa-floppy-disk"></i> Guardar
-                </button>
-              </div>
-            </div>
             <!--   <div class="row mt-2">
               <div class="col text-left">
                 <form *ngIf="cuestionario$ | async as cuestionario">
@@ -117,6 +106,17 @@
               </div>
             </div> -->
           </fieldset>
+          <div class="row text-right">
+            <div class="col">
+              <button
+                class="btn btn-success"
+                (click)="generarFormulario()"
+                [disabled]="!formulario.valid"
+              >
+                <i class="fa-solid fa-floppy-disk"></i> Guardar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

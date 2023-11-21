@@ -171,7 +171,7 @@ export class ExpectativasCapacitacionComponent {
   editarExpectativaCapacitacionRespuesta(
     element: ExpectativaCapacitacionRespuesta[]
   ) {
-    console.log(element);
+    console.log('Expectativa::',element);
 
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
