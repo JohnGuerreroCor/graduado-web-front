@@ -11,17 +11,28 @@
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Institución</mat-label>
               <input
-                required
+                #input1
+                maxlength="255"
                 matInput
                 type="text"
                 formControlName="institucion"
+                required
               />
+              <mat-hint align="end">{{ input1.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
           <div class="col">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Tipo de reconocimiento</mat-label>
-              <input required matInput type="text" formControlName="tipo" />
+              <input
+                #input2
+                maxlength="255"
+                matInput
+                type="text"
+                formControlName="tipo"
+                required
+              />
+              <mat-hint align="end">{{ input2.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
         </div>
@@ -98,7 +109,15 @@
           <div class="col">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Título</mat-label>
-              <input required matInput type="text" formControlName="titulo" />
+              <input
+                required
+                #input3
+                maxlength="255"
+                matInput
+                type="text"
+                formControlName="titulo"
+              />
+              <mat-hint align="end">{{ input3.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
         </div>
@@ -106,7 +125,13 @@
           <div class="col">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Descripción</mat-label>
-              <textarea matInput formControlName="descripcion"></textarea>
+              <textarea
+                matInput
+                #input4
+                maxlength="255"
+                formControlName="descripcion"
+              ></textarea>
+              <mat-hint align="end">{{ input4.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
         </div>
@@ -118,7 +143,11 @@
   <button class="btn btn-warning mr-2" mat-dialog-close>
     <i class="fa-solid fa-xmark"></i> Cancelar
   </button>
-  <button class="btn btn-success" (click)="generarMencionReconocimiento()" [disabled]="!formularioMencionReconocimiento.valid">
+  <button
+    class="btn btn-success"
+    (click)="generarMencionReconocimiento()"
+    [disabled]="!formularioMencionReconocimiento.valid"
+  >
     <i class="fa-solid fa-floppy-disk"></i> Guardar
   </button>
 </mat-dialog-actions>

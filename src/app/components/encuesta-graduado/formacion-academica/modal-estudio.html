@@ -10,7 +10,15 @@
           <div class="col">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Nombre del estudio realizado</mat-label>
-              <input required matInput type="text" formControlName="titulo" />
+              <input
+                #input1
+                maxlength="255"
+                matInput
+                type="text"
+                formControlName="titulo"
+                required
+              />
+              <mat-hint align="end">{{ input1.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
           <div class="col">
@@ -103,11 +111,14 @@
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Institución en la que se realizó</mat-label>
               <input
-                required
+                #input2
+                maxlength="255"
                 matInput
                 type="text"
                 formControlName="institucion"
+                required
               />
+              <mat-hint align="end">{{ input2.value.length }}/255</mat-hint>
             </mat-form-field>
           </div>
           <div class="col-sm-3">
@@ -128,10 +139,7 @@
   <button class="btn btn-warning mr-2" mat-dialog-close>
     <i class="fa-solid fa-xmark"></i> Cancelar
   </button>
-  <button
-    class="btn btn-success"
-    (click)="generarHistorialAcademico()"
-  >
+  <button class="btn btn-success" (click)="generarHistorialAcademico()">
     <i class="fa-solid fa-floppy-disk"></i> Guardar
   </button>
 </mat-dialog-actions>
