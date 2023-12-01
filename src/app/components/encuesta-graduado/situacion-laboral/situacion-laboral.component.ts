@@ -129,13 +129,7 @@ export class SituacionLaboralComponent {
         element.respuestaCodigo = this.formulario.get(
           'codigoRespuesta' + (index + 1)
         )!.value;
-        console.log(
-          (element.respuestaCodigo = this.formulario.get(
-            'codigoRespuesta' + (index + 1)
-          )!.value)
-        );
         element.fechaRespuesta = new Date();
-        console.log(element);
         this.actualizarFormulario(element);
       }
     } else {
@@ -189,8 +183,6 @@ export class SituacionLaboralComponent {
   }
 
   editarExpectativaCapacitacionRespuesta(element: SituacionLaboralRespuesta[]) {
-    console.log(element);
-
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
     this.formulario.get('codigo2')!.setValue(element[1].codigo);

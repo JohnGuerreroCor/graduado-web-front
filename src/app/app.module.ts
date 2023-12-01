@@ -34,6 +34,7 @@ import {
   DistincionesReconocimientosComponent,
   ModalMembresia,
 } from './components/encuesta-graduado/distinciones-reconocimientos/distinciones-reconocimientos.component';
+import { EmailHidePipe } from './pipes/email-hide.pipe';
 
 registerLocaleData(localeEsCO, 'es-CO');
 
@@ -56,6 +57,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     ExpectativasCapacitacionComponent,
     DistincionesReconocimientosComponent,
     ModalMembresia,
+    EmailHidePipe,
   ],
   imports: [
     BrowserModule,

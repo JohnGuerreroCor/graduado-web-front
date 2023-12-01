@@ -6,6 +6,7 @@ export class Usuario {
   nombre!: String;
   apellido!: String;
   identificacion!:string;
+  correo!:string;
   uaa!: String;
   roles: string[] = [];
 }

@@ -48,7 +48,6 @@ export class SoporteExpedicionService {
     let formData: FormData = new FormData();
     formData.set('archivo', archivo);
     formData.set('json', JSON.stringify(json));
-    console.log('Servicio:', json);
     return this.http.post<null>(
       `${this.url}/registrar-soporte-expedicion/${this.userLogeado}/${this.perCodigo}/${this.uaa}`,
       formData,

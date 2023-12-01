@@ -13,28 +13,25 @@
       <hr class="punteada" />
       <div class="row">
         <div class="col">
-          <h6 class="font-weight-bold text-white text-uppercase">
-            Sistema graduados <br />
-            TOKEN
-          </h6>
+          <h6 class="font-weight-bold text-white">TOKEN</h6>
         </div>
       </div>
     </div>
     <div class="card-body text-center font-usco-gr">
       <div class="container">
-        <form [formGroup]="formToken">
-          <div class="row">
+        <form>
+          <div class="row justify-content-center">
             <div class="col">
               <p>
-                Se ha enviado a su correo institucional <br />
-                (<b *ngIf="correo">{{ correo.correo }}</b
+                Se ha enviado a su correo personal <br />
+                (<b *ngIf="correo">{{ correo | emailHide : 2 }}</b
                 >) un codigo de verificación. <br />
-                Por favor ingresar a su correo, copia el codigo <br />
-                y diligenciar en el campo correspondiente.
+                Por favor ingresar a su correo, copie el codigo <br />
+                o digítelo en el campo correspondiente.
               </p>
             </div>
           </div>
-          <div class="row pl-5 pr-5">
+          <div class="row justify-content-center">
             <div class="col">
               <mat-form-field class="example-full-width" appearance="outline">
                 <span matPrefix class="p-3"
@@ -44,7 +41,7 @@
                 <input
                   matInput
                   name="codigo"
-                  formControlName="token"
+                  [(ngModel)]="codigo"
                   autocomplete="off"
                 />
               </mat-form-field>
@@ -56,7 +53,6 @@
                 (click)="validarToken()"
                 type="button"
                 class="btn btn-usco-vt"
-                [disabled]="!formToken.valid"
               >
                 Validar Token
                 <span
@@ -72,7 +68,7 @@
             <div class="col">
               <small
                 ><b class="version"
-                  >© {{ today | date : "yyyy" }} CITCD - Versión 3 Construcción
+                  >© {{ today | date : "yyyy" }} CITCD - Version 3 Construcción
                   1.0</b
                 ></small
               >

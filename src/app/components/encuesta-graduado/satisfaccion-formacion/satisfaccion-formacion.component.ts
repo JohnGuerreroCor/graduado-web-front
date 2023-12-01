@@ -156,13 +156,7 @@ export class SatisfaccionFormacionComponent {
         element.respuestaCodigo = this.formulario.get(
           'codigoRespuesta' + (index + 1)
         )!.value;
-        console.log(
-          (element.respuestaCodigo = +this.formulario.get(
-            'codigoRespuesta' + (index + 1)
-          )!.value)
-        );
         element.fechaRespuesta = new Date();
-        console.log(element);
         this.actualizarFormulario(element);
       }
     } else {
@@ -218,7 +212,6 @@ export class SatisfaccionFormacionComponent {
   editarExpectativaCapacitacionRespuesta(
     element: ExpectativaCapacitacionRespuesta[]
   ) {
-    console.log(element);
 
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
@@ -384,7 +377,6 @@ export class SatisfaccionFormacionComponent {
   crearCuestionario(
     element: ExpectativaCapacitacionPregunta[]
   ): Observable<ExpectativaCapacitacionCuestionario[]> {
-    console.log('Element:: ', element);
 
     return forkJoin(
       element.map((pregunta) =>

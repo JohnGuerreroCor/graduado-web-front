@@ -88,7 +88,6 @@ export class UbicacionService {
   }
 
   obtenerDepartamentosPorMunicipio(codigo: number): Observable<Departamento[]> {
-    console.log('Entra');
     return this.http.get<Departamento[]>(
       `${this.url}/obtener-departamentos-municipio/${codigo}`,
       { headers: this.aggAutorizacionHeader() }

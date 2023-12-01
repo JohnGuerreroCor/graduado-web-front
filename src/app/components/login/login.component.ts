@@ -63,13 +63,7 @@ export class LoginComponent implements OnInit {
         });
         this.router.navigate(['encuesta-seguimiento']);
       } else {
-        this.webparametroService.obtenerWebParametro().subscribe((data) => {
-          if (data[0].webValor === '1') {
-            this.router.navigate(['/login']);
-          } else {
-            this.router.navigate(['/encuesta-seguimiento']);
-          }
-        });
+        this.router.navigate(['token']);
       }
     }
   }
@@ -106,23 +100,23 @@ export class LoginComponent implements OnInit {
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
         // Mostrar mensaje de éxito y redirigir
-        Swal.fire({
-          icon: 'success',
-          title: 'Inicio de sesión exitoso.',
-          confirmButtonColor: '#8f141b',
-          confirmButtonText: 'Listo',
-          showClass: {
-            popup: 'slide-top',
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
           },
         });
-        // Redirigir al usuario a la página de inicio o de token según el valor del parámetro web
-        this.webparametroService.obtenerWebParametro().subscribe((data) => {
-          if (data[0].webValor === '1') {
-            this.router.navigate(['/token']);
-          } else {
-            this.router.navigate(['/encuesta-seguimiento']);
-          }
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Inicio de sesión exitoso.',
         });
+        this.router.navigate(['/token']);
       },
       (err) => this.fError(err)
     );

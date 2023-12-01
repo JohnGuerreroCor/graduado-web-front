@@ -175,7 +175,6 @@ export class DatosPersonalesComponent {
       .obtenerDatosPersonales(this.identificacion)
       .subscribe((data) => {
         this.listadoDatosPersonales = data;
-        console.log(data);
         this.precargaGraduado();
       });
   }
@@ -496,7 +495,6 @@ export class ModalExpedicion implements OnInit {
   }
 
   registrarSoporte(archivo: File, soporteExpedicion: SoporteExpedicion) {
-    console.log('Data: ', soporteExpedicion);
     const arch = new File([archivo], this.nombreArchivo, {
       type: archivo.type,
     });

@@ -99,13 +99,7 @@ export class ExpectativasCapacitacionComponent {
         element.respuestaCodigo = this.formulario.get(
           'codigoRespuesta' + (index + 1)
         )!.value;
-        console.log(
-          (element.respuestaCodigo = this.formulario.get(
-            'codigoRespuesta' + (index + 1)
-          )!.value)
-        );
         element.fechaRespuesta = new Date();
-        console.log(element);
         this.actualizarFormulario(element);
       }
     } else {
@@ -171,8 +165,6 @@ export class ExpectativasCapacitacionComponent {
   editarExpectativaCapacitacionRespuesta(
     element: ExpectativaCapacitacionRespuesta[]
   ) {
-    console.log('Expectativa::',element);
-
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
     this.formulario.get('codigo2')!.setValue(element[1].codigo);
@@ -250,8 +242,6 @@ export class ExpectativasCapacitacionComponent {
   crearCuestionario(
     element: ExpectativaCapacitacionPregunta[]
   ): Observable<ExpectativaCapacitacionCuestionario[]> {
-    console.log('Element:: ', element);
-
     return forkJoin(
       element.map((pregunta) =>
         this.expectativaCapacitacionService.obtenerEscala(pregunta.codigo).pipe(
