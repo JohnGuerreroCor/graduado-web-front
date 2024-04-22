@@ -59,7 +59,7 @@ export class ExpectativasCapacitacionComponent {
     private router: Router,
     public expectativaCapacitacionService: ExpectativaCapacitacionService
   ) {
-    this.identificacion = '' + authService.user.identificacion;
+    this.identificacion = '' + authService.user.personaIdentificacion;
     this.obteneListadoRespuestasUno();
     this.obteneListadoRespuestasDos();
     this.obteneListadoRespuestasTres();
@@ -91,7 +91,7 @@ export class ExpectativasCapacitacionComponent {
   generarFormulario(): void {
     let element: ExpectativaCapacitacionRespuesta =
       new ExpectativaCapacitacionRespuesta();
-    element.personaCodigo = this.authService.user.per_codigo;
+    element.personaCodigo = this.authService.user.personaCodigo;
     if (this.editar) {
       for (let index = 0; index < 3; index++) {
         element.codigo = this.formulario.get('codigo' + (index + 1))!.value;

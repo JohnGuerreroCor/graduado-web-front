@@ -69,7 +69,7 @@ export class SituacionLaboralComponent {
 
     public situacionLaboralService: SituacionLaboralService
   ) {
-    this.identificacion = '' + authService.user.identificacion;
+    this.identificacion = '' + authService.user.personaCodigo;
     this.obteneListadoRespuestasUno();
     this.obteneListadoRespuestasDos();
     this.obteneListadoRespuestasTres();
@@ -121,7 +121,7 @@ export class SituacionLaboralComponent {
 
   generarFormulario(): void {
     let element: SituacionLaboralRespuesta = new SituacionLaboralRespuesta();
-    element.personaCodigo = this.authService.user.per_codigo;
+    element.personaCodigo = this.authService.user.personaCodigo;
     if (this.editar) {
       for (let index = 0; index < 10; index++) {
         element.codigo = this.formulario.get('codigo' + (index + 1))!.value;

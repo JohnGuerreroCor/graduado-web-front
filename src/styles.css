@@ -432,3 +432,7 @@ input[type="number"] {
   min-height: 12px !important;
 }
  */
+
+.mdc-text-field--disabled .mdc-text-field__input {
+  color: rgb(0, 0, 0);
+}

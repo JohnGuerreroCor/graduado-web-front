@@ -128,7 +128,7 @@
                     appearance="outline"
                   >
                     <mat-label>Genero</mat-label>
-                    <input matInput value="MASCULINO" readonly />
+                    <input matInput value="MASCULINO" disabled readonly />
                   </mat-form-field>
                 </div>
                 <div
@@ -140,7 +140,7 @@
                     appearance="outline"
                   >
                     <mat-label>Genero</mat-label>
-                    <input matInput value="FAMENINO" readonly />
+                    <input matInput value="FAMENINO" disabled readonly />
                   </mat-form-field>
                 </div>
                 <div class="col text-left">
@@ -304,7 +304,10 @@
                 </div>
               </div> -->
             </fieldset>
-            <fieldset class="scheduler-border shadow-sm">
+            <fieldset
+              class="scheduler-border shadow-sm"
+              (click)="deshabilitado()"
+            >
               <legend class="scheduler-border font-usco-vt">
                 Datos de contacto
               </legend>
@@ -359,7 +362,10 @@
                 </div>
               </div>
             </fieldset>
-            <fieldset class="scheduler-border shadow-sm">
+            <fieldset
+              class="scheduler-border shadow-sm"
+              (click)="deshabilitado()"
+            >
               <legend class="scheduler-border font-usco-vt">
                 Datos de residencia
               </legend>

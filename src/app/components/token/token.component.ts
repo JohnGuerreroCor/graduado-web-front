@@ -13,8 +13,9 @@ import swal from 'sweetalert2';
   styleUrls: ['./token.component.css'],
 })
 export class TokenComponent implements OnInit {
-  public nombre: any = this.auth.user.nombre + ' ' + this.auth.user.apellido;
-  public correo: any = this.auth.user.correo;
+  public nombre: any =
+    this.auth.user.personaNombre + ' ' + this.auth.user.personaApellido;
+  public correo: any = this.auth.user.personaEmail;
 
   codigo!: String;
   codioCorrecto!: String;

@@ -68,7 +68,7 @@ export class SatisfaccionFormacionComponent {
     public satisfaccionFormacionService: SatisfaccionFormacionService,
     public situacionLaboralService: SituacionLaboralService
   ) {
-    this.identificacion = '' + authService.user.identificacion;
+    this.identificacion = '' + authService.user.personaIdentificacion;
     this.obteneListadoRespuestasDos();
     this.obtenerPreguntas();
     this.crearFormulario();
@@ -148,7 +148,7 @@ export class SatisfaccionFormacionComponent {
 
   generarFormulario(): void {
     let element: CompetenciaRespuesta = new CompetenciaRespuesta();
-    element.personaCodigo = this.authService.user.per_codigo;
+    element.personaCodigo = this.authService.user.personaCodigo;
     if (this.editar) {
       for (let index = 0; index < 28; index++) {
         element.codigo = this.formulario.get('codigo' + (index + 1))!.value;
@@ -212,7 +212,6 @@ export class SatisfaccionFormacionComponent {
   editarExpectativaCapacitacionRespuesta(
     element: ExpectativaCapacitacionRespuesta[]
   ) {
-
     this.editar = true;
     this.formulario.get('codigo1')!.setValue(element[0].codigo);
     this.formulario.get('codigo2')!.setValue(element[1].codigo);
@@ -377,7 +376,6 @@ export class SatisfaccionFormacionComponent {
   crearCuestionario(
     element: ExpectativaCapacitacionPregunta[]
   ): Observable<ExpectativaCapacitacionCuestionario[]> {
-
     return forkJoin(
       element.map((pregunta) =>
         this.expectativaCapacitacionService.obtenerEscala(pregunta.codigo).pipe(

@@ -91,7 +91,7 @@ export class DatosPersonalesComponent {
     private datePipe: DatePipe
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.identificacion = '' + authService.user.identificacion;
+      this.identificacion = '' + authService.user.personaIdentificacion;
       this.graduado = [];
       this.foto.url = '';
       this.dataSource = new MatTableDataSource<Graduado>([]);
@@ -104,21 +104,66 @@ export class DatosPersonalesComponent {
   private crearFormularioDatosPersonales(): void {
     this.formDatosPersonales = this.formBuilder.group({
       codigo: new FormControl(''),
-      identificacionTipo: new FormControl('', Validators.required),
-      identificacion: new FormControl('', Validators.required),
-      identificacionFechaExpedicion: new FormControl('', Validators.required),
-      paisExpedicion: new FormControl('', Validators.required),
-      departamentoExpedicion: new FormControl('', Validators.required),
-      municipioExpedicion: new FormControl('', Validators.required),
-      apellido: new FormControl('', Validators.required),
-      nombre: new FormControl('', Validators.required),
-      genero: new FormControl('', Validators.required),
-      estadoCivil: new FormControl('', Validators.required),
-      grupoSanguineo: new FormControl('', Validators.required),
-      fechaNacimiento: new FormControl('', Validators.required),
-      paisNacimiento: new FormControl('', Validators.required),
-      departamentoNacimiento: new FormControl('', Validators.required),
-      municipioNacimiento: new FormControl('', Validators.required),
+      identificacionTipo: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      identificacion: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      identificacionFechaExpedicion: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      paisExpedicion: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      departamentoExpedicion: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      municipioExpedicion: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      apellido: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      nombre: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      genero: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      estadoCivil: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      grupoSanguineo: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      fechaNacimiento: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      paisNacimiento: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      departamentoNacimiento: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
+      municipioNacimiento: new FormControl(
+        { value: '', disabled: true },
+        Validators.required
+      ),
       emailPersonal: new FormControl('', Validators.required),
       paginaWeb: new FormControl('', Validators.required),
       telefonoFijo: new FormControl('', Validators.required),
@@ -132,6 +177,25 @@ export class DatosPersonalesComponent {
   }
 
   ngOnInit(): void {}
+
+  deshabilitado() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: 'warning',
+      title: 'Habilite la opción editar datos',
+    });
+  }
 
   openDialogExpedicion(element: any): void {
     this.dialogRef = this.dialog.open(ModalExpedicion, {

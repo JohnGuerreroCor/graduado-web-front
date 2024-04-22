@@ -60,7 +60,7 @@ export class DistincionesReconocimientosComponent {
     public mencionReconocimientoService: MencionReconocimientoService,
     private router: Router
   ) {
-    this.identificacion = '' + authService.user.identificacion;
+    this.identificacion = '' + authService.user.personaIdentificacion;
     this.obtenerMencionReconocimiento();
   }
 
@@ -267,7 +267,7 @@ export class ModalMembresia {
       new MencionReconocimiento();
     mencionReconocimiento.codigo =
       this.formularioMencionReconocimiento.get('codigo')!.value;
-    mencionReconocimiento.personaCodigo = this.authService.user.per_codigo;
+    mencionReconocimiento.personaCodigo = this.authService.user.personaCodigo;
     mencionReconocimiento.institucion =
       this.formularioMencionReconocimiento.get('institucion')!.value;
     mencionReconocimiento.tipo =

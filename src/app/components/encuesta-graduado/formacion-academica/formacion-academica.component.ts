@@ -74,7 +74,7 @@ export class FormacionAcademicaComponent {
     private datePipe: DatePipe,
     private router: Router
   ) {
-    this.identificacion = '' + authService.user.identificacion;
+    this.identificacion = '' + authService.user.personaIdentificacion;
     this.dataSource = new MatTableDataSource<Graduado>([]);
     this.buscarGraduado(this.identificacion);
     this.obtenerHistorialAcademico();
@@ -322,7 +322,7 @@ export class ModalEstudio {
     let historialAcademico: HistorialAcademico = new HistorialAcademico();
     historialAcademico.codigo =
       this.formularioFormacionAcademica.get('codigo')!.value;
-    historialAcademico.perCodigo = this.authService.user.per_codigo;
+    historialAcademico.perCodigo = this.authService.user.personaCodigo;
     historialAcademico.titulo =
       this.formularioFormacionAcademica.get('titulo')!.value;
     historialAcademico.nivelAcademicoCodigo =
