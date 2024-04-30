@@ -7,6 +7,8 @@ import { DatosPersonalesComponent } from './components/encuesta-graduado/datos-p
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+
   { path: 'acceso-denegado', component: NotfoundComponent },
 
   { path: 'login', component: LoginComponent },
@@ -15,7 +17,7 @@ const routes: Routes = [
   { path: 'encuesta-seguimiento', component: EncuestaGraduadoComponent },
   { path: 'datos-personales', component: DatosPersonalesComponent },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/acceso-denegado' },
+  { path: '**', redirectTo: 'acceso-denegado' },
 ];
 
 @NgModule({
