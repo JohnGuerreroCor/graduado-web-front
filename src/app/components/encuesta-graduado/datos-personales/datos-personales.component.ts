@@ -58,7 +58,9 @@ export class DatosPersonalesComponent {
 
   cargaFoto: boolean = false;
 
-  nombreFoto = 'Seleccione la foto a cargar...';
+  nombreFoto = 'Seleccione la foto';
+
+  alert: boolean = true;
 
   file!: FileList;
 
@@ -176,7 +178,11 @@ export class DatosPersonalesComponent {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.alert = false;
+    }, 9000);
+  }
 
   deshabilitado() {
     const Toast = Swal.mixin({

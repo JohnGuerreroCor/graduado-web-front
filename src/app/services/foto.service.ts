@@ -14,9 +14,9 @@ export class FotoService {
   private url: string = `${environment.URL_BACKEND}/foto`;
   private httpHeaders = new HttpHeaders();
 
-  private uaa = this.authservice.obtenerUaa();
+  private uaa = 629;
 
-  private perCodigo = this.authservice.obtenerPerCodigo();
+  private perCodigo = this.authservice.user.personaCodigo;
 
   userLogeado: String = this.authservice.user.username;
 

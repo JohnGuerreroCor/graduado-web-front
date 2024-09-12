@@ -33,12 +33,11 @@
                 <input
                   matInput
                   formControlName="usuario"
+                  placeholder="Número de identificación"
                   name="username"
                   autocomplete="off"
+                  tabindex="1"
                 />
-                <button mat-icon-button matSuffix (click)="informacion()">
-                  <i class="fa-solid fa-circle-info"></i>
-                </button>
               </mat-form-field>
             </div>
           </div>
@@ -104,7 +103,7 @@
             <small
               ><b class="version"
                 >© {{ today | date : "yyyy" }} CITCD - Versión 3 Construcción
-                1.0</b
+                1.6</b
               ></small
             >
           </div>
